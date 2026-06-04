@@ -1,0 +1,33 @@
+{
+  "chains": [
+    "tron:mainnet",
+    "eip155:56"
+  ],
+  "description": "Current weather data for city-level applications.",
+  "endpoints": [
+    {
+      "description": "Current weather for a city.",
+      "max_price_usd": 0.002,
+      "metered": true,
+      "method": "GET",
+      "min_price_usd": 0.002,
+      "path": "/v1/current",
+      "url": "https://gateway.bankofai.io/providers/acme-weather/v1/current"
+    }
+  ],
+  "fqn": "acme-weather",
+  "i18n": {
+    "zh-CN": {
+      "description": "为城市级应用提供实时天气数据。",
+      "subtitle": "城市级实时天气查询",
+      "title": "Acme 天气 API",
+      "useCase": "适合按城市查询当前天气。"
+    }
+  },
+  "service_url": "https://gateway.bankofai.io/providers/acme-weather",
+  "sha": "6d9d3be5dea4e75ad42b17bd9bf19274716326759d960d8deaa021944dc7eae2",
+  "subtitle": "City-level weather lookup",
+  "title": "Acme Weather API",
+  "use_case": "Use for current weather lookup by city.",
+  "version": 1
+}

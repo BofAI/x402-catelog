@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "x402 public catalog provider",
+  "type": "object",
+  "required": [
+    "version",
+    "fqn",
+    "title",
+    "subtitle",
+    "description",
+    "useCase",
+    "i18n",
+    "logo",
+    "category",
+    "chains",
+    "serviceUrl",
+    "endpoints"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "fqn": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,62}$" },
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "description": { "type": "string" },
+    "useCase": { "type": "string" },
+    "logo": { "type": "string" },
+    "category": { "type": "string" },
+    "chains": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "isFirstParty": { "type": "boolean" },
+    "isFeatured": { "type": "boolean" },
+    "featuredTags": { "type": "array", "items": { "type": "string" } },
+    "serviceUrl": { "type": "string" },
+    "endpoints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "method",
+          "path",
+          "url",
+          "title",
+          "subtitle",
+          "description",
+          "useCase",
+          "i18n",
+          "metered",
+          "minPriceUsd",
+          "maxPriceUsd"
+        ]
+      }
+    }
+  }
+}

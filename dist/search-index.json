@@ -1,0 +1,31 @@
+{
+  "documents": [
+    {
+      "category": "data",
+      "chains": [
+        "tron:mainnet",
+        "eip155:56"
+      ],
+      "description": "Current weather data for city-level applications.",
+      "endpoints": [
+        {
+          "description": "Current weather for a city.",
+          "method": "GET",
+          "path": "/v1/current",
+          "title": "Current Weather"
+        }
+      ],
+      "featured_tags": [
+        "weather",
+        "data"
+      ],
+      "fqn": "acme-weather",
+      "service_url": "https://gateway.bankofai.io/providers/acme-weather",
+      "subtitle": "City-level weather lookup",
+      "title": "Acme Weather API",
+      "use_case": "Use for current weather lookup by city."
+    }
+  ],
+  "generated_at": "2026-06-04T06:28:38Z",
+  "version": 1
+}
