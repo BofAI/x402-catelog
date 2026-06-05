@@ -105,3 +105,12 @@ GET /api/pay/<fqn>.json
 ```
 
 The current static server shape maps those files from `dist/`.
+
+## 6. Run the Catalog Container
+
+```bash
+docker compose build catalog
+docker compose up -d catalog
+curl http://127.0.0.1:8088/api/status.json
+curl http://127.0.0.1:8088/api/catalog.json
+```

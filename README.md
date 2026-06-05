@@ -26,6 +26,23 @@ python3 scripts/validate.py
 python3 scripts/build.py
 ```
 
+## 容器启动
+
+Catalog 是静态服务，镜像构建时会先校验并生成 `dist/`，然后从 `/api/` 提供 JSON。
+
+```bash
+docker compose build catalog
+docker compose up -d catalog
+curl http://127.0.0.1:8088/api/status.json
+curl http://127.0.0.1:8088/api/catalog.json
+```
+
+端口可通过环境变量覆盖：
+
+```bash
+X402_CATALOG_PORT=8088 docker compose up -d catalog
+```
+
 ## 本地搜索 Demo
 
 ```bash
