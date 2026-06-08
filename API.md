@@ -525,6 +525,61 @@ Catalog API 只负责发现和展示。
 如果 endpoint 是 paid，未携带 x402 payment header 时 gateway 会返回 402 Payment Required。
 ```
 
+链展示建议：
+
+```text
+一期不建议做顶部全局链切换。
+原因是 Catalog 的 endpoint.url 对 BNB Chain 和 TRON 是同一类 gateway URL，调用代码不需要把链写进 URL。
+链信息主要用于展示 provider 支持范围，以及支付时筛选 payment requirements。
+```
+
+前端建议保留：
+
+```text
+provider 卡片上的 chains badge
+详情页的支持链说明
+可选的列表筛选条件
+```
+
+前端建议去掉：
+
+```text
+顶部全局链切换
+依赖顶部链切换改变 endpoint.url 的逻辑
+```
+
+CLI 调用代码默认不需要指定链：
+
+```bash
+x402-cli pay 'https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
+```
+
+如果用户明确要限制某条链，可以展示为高级用法：
+
+```bash
+x402-cli pay \
+  --network eip155:97 \
+  'https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
+```
+
+`--network` 使用 CAIP-2 ID，例如：
+
+```text
+eip155:56    BNB Chain
+eip155:97    BNB Smart Chain Testnet
+tron:mainnet TRON Mainnet
+tron:nile    TRON Nile Testnet
+tron:shasta  TRON Shasta Testnet
+```
+
+注意：
+
+```text
+BNB Chain 和 TRON 在前端展示层可以按同一种 provider 模型处理。
+但它们在支付底层不完全一致：network ID、钱包签名机制、facilitator settle 逻辑、gas 承担方式都可能不同。
+这些差异由 gateway、x402-cli 和 402 payment requirements 处理，不应该强行放到前端顶部全局切换里。
+```
+
 ## 11. TypeScript 类型参考
 
 ```ts
