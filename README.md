@@ -4,6 +4,7 @@
 
 社区提交流程和可复制命令见 [`examples/README.md`](examples/README.md)。
 前端和测试环境调试流程见 [`TESTING.md`](TESTING.md)。
+前端接口文档见 [`API.md`](API.md)。
 
 服务方自己运行 gateway，向本仓库提交公开材料：
 
