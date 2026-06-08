@@ -6,21 +6,32 @@
     "categories": [
       {
         "count": 2,
-        "id": "data"
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
       }
     ],
     "chains": [
       {
         "count": 1,
-        "id": "eip155:56"
+        "id": "eip155:56",
+        "kind": "bnb",
+        "label": "BNB Chain",
+        "label_zh": "BNB Chain"
       },
       {
         "count": 1,
-        "id": "eip155:97"
+        "id": "eip155:97",
+        "kind": "bnb",
+        "label": "BNB Smart Chain Testnet",
+        "label_zh": "BNB 测试网"
       },
       {
         "count": 1,
-        "id": "tron:mainnet"
+        "id": "tron:mainnet",
+        "kind": "tron",
+        "label": "TRON Mainnet",
+        "label_zh": "TRON 主网"
       }
     ],
     "featured_fqns": [
@@ -28,14 +39,37 @@
       "open-meteo-weather"
     ]
   },
-  "generated_at": "2026-06-08T02:37:38Z",
+  "generated_at": "2026-06-08T04:52:12Z",
   "provider_count": 2,
   "providers": [
     {
       "category": "data",
+      "category_meta": {
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
+      },
+      "chain_kinds": [
+        "bnb",
+        "tron"
+      ],
       "chains": [
         "tron:mainnet",
         "eip155:56"
+      ],
+      "chains_meta": [
+        {
+          "id": "tron:mainnet",
+          "kind": "tron",
+          "label": "TRON Mainnet",
+          "label_zh": "TRON 主网"
+        },
+        {
+          "id": "eip155:56",
+          "kind": "bnb",
+          "label": "BNB Chain",
+          "label_zh": "BNB Chain"
+        }
       ],
       "description": "Current weather data for city-level applications.",
       "endpoint_count": 1,
@@ -57,18 +91,37 @@
       "is_featured": true,
       "is_first_party": false,
       "logo": "https://catalog.bankofai.io/assets/providers/acme-weather/logo.png",
+      "main_title": "Acme Weather API",
       "max_price_usd": 0.002,
       "min_price_usd": 0.002,
       "service_url": "https://gateway.bankofai.io/providers/acme-weather",
       "sha": "6d9d3be5dea4e75ad42b17bd9bf19274716326759d960d8deaa021944dc7eae2",
+      "sub_title": "城市级实时天气查询",
       "subtitle": "City-level weather lookup",
       "title": "Acme Weather API",
+      "title_zh": "Acme 天气 API",
       "use_case": "Use for current weather lookup by city."
     },
     {
       "category": "data",
+      "category_meta": {
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
+      },
+      "chain_kinds": [
+        "bnb"
+      ],
       "chains": [
         "eip155:97"
+      ],
+      "chains_meta": [
+        {
+          "id": "eip155:97",
+          "kind": "bnb",
+          "label": "BNB Smart Chain Testnet",
+          "label_zh": "BNB 测试网"
+        }
       ],
       "description": "Current weather data from the public Open-Meteo API.",
       "endpoint_count": 1,
@@ -91,12 +144,15 @@
       "is_featured": true,
       "is_first_party": false,
       "logo": "https://open-meteo.com/favicon.ico",
+      "main_title": "Open-Meteo Weather API",
       "max_price_usd": 0.001,
       "min_price_usd": 0.001,
       "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
       "sha": "ccff4c6326c66e3fa1884bed302d40d4a8bc9a39feb5955c37aea29d87025277",
+      "sub_title": "按经纬度查询实时天气",
       "subtitle": "Coordinate-based current weather",
       "title": "Open-Meteo Weather API",
+      "title_zh": "Open-Meteo 天气 API",
       "use_case": "Use for current weather lookup when latitude and longitude are already known."
     }
   ],

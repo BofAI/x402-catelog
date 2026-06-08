@@ -1,8 +1,31 @@
 {
   "category": "data",
+  "category_meta": {
+    "id": "data",
+    "label": "Data",
+    "label_zh": "数据"
+  },
+  "chain_kinds": [
+    "bnb",
+    "tron"
+  ],
   "chains": [
     "tron:mainnet",
     "eip155:56"
+  ],
+  "chains_meta": [
+    {
+      "id": "tron:mainnet",
+      "kind": "tron",
+      "label": "TRON Mainnet",
+      "label_zh": "TRON 主网"
+    },
+    {
+      "id": "eip155:56",
+      "kind": "bnb",
+      "label": "BNB Chain",
+      "label_zh": "BNB Chain"
+    }
   ],
   "description": "Current weather data for city-level applications.",
   "endpoint_count": 1,
@@ -46,6 +69,7 @@
   "is_featured": true,
   "is_first_party": false,
   "logo": "https://catalog.bankofai.io/assets/providers/acme-weather/logo.png",
+  "main_title": "Acme Weather API",
   "max_price_usd": 0.002,
   "min_price_usd": 0.002,
   "service_url": "https://gateway.bankofai.io/providers/acme-weather",
@@ -56,7 +80,9 @@
     "payment": "unknown",
     "upstream": "unknown"
   },
+  "sub_title": "城市级实时天气查询",
   "subtitle": "City-level weather lookup",
   "title": "Acme Weather API",
+  "title_zh": "Acme 天气 API",
   "use_case": "Use for current weather lookup by city."
 }

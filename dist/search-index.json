@@ -2,9 +2,32 @@
   "documents": [
     {
       "category": "data",
+      "category_meta": {
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
+      },
+      "chain_kinds": [
+        "bnb",
+        "tron"
+      ],
       "chains": [
         "tron:mainnet",
         "eip155:56"
+      ],
+      "chains_meta": [
+        {
+          "id": "tron:mainnet",
+          "kind": "tron",
+          "label": "TRON Mainnet",
+          "label_zh": "TRON 主网"
+        },
+        {
+          "id": "eip155:56",
+          "kind": "bnb",
+          "label": "BNB Chain",
+          "label_zh": "BNB Chain"
+        }
       ],
       "description": "Current weather data for city-level applications.",
       "endpoints": [
@@ -27,8 +50,24 @@
     },
     {
       "category": "data",
+      "category_meta": {
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
+      },
+      "chain_kinds": [
+        "bnb"
+      ],
       "chains": [
         "eip155:97"
+      ],
+      "chains_meta": [
+        {
+          "id": "eip155:97",
+          "kind": "bnb",
+          "label": "BNB Smart Chain Testnet",
+          "label_zh": "BNB 测试网"
+        }
       ],
       "description": "Current weather data from the public Open-Meteo API.",
       "endpoints": [
@@ -51,6 +90,6 @@
       "use_case": "Use for current weather lookup when latitude and longitude are already known."
     }
   ],
-  "generated_at": "2026-06-08T02:37:38Z",
+  "generated_at": "2026-06-08T04:52:12Z",
   "version": 1
 }

@@ -1,6 +1,8 @@
 [
   {
     "count": 2,
-    "id": "data"
+    "id": "data",
+    "label": "Data",
+    "label_zh": "数据"
   }
 ]

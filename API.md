@@ -35,6 +35,8 @@ GET /api/categories.json
 GET /api/search-index.json
 ```
 
+一期接口路径都带 `.json` 或 `.md` 后缀，因为 Catalog Server 当前按静态文件发布。前端请直接使用带后缀路径，不要调用 `/api/catalog` 这种无后缀地址。
+
 `<fqn>` 是 provider 的唯一标识，例如：
 
 ```text
@@ -120,6 +122,9 @@ GET /api/catalog.json
     {
       "fqn": "open-meteo-weather",
       "title": "Open-Meteo Weather API",
+      "title_zh": "Open-Meteo 天气 API",
+      "main_title": "Open-Meteo Weather API",
+      "sub_title": "按经纬度查询实时天气",
       "subtitle": "Coordinate-based current weather",
       "description": "Current weather data from the public Open-Meteo API.",
       "use_case": "Use for current weather lookup when latitude and longitude are already known.",
@@ -133,7 +138,21 @@ GET /api/catalog.json
       },
       "logo": "https://open-meteo.com/favicon.ico",
       "category": "data",
+      "category_meta": {
+        "id": "data",
+        "label": "Data",
+        "label_zh": "数据"
+      },
       "chains": ["eip155:97"],
+      "chain_kinds": ["bnb"],
+      "chains_meta": [
+        {
+          "id": "eip155:97",
+          "kind": "bnb",
+          "label": "BNB Smart Chain Testnet",
+          "label_zh": "BNB 测试网"
+        }
+      ],
       "is_first_party": false,
       "is_featured": true,
       "featured_tags": ["weather", "open-data", "no-api-key"],
@@ -169,9 +188,14 @@ GET /api/catalog.json
 | `featured_fqns` | string[] | 精选 provider 的 fqn 列表 |
 | `categories` | array | 当前有 provider 的分类 |
 | `categories[].id` | string | 分类 ID |
+| `categories[].label` | string | 分类英文展示名 |
+| `categories[].label_zh` | string | 分类中文展示名 |
 | `categories[].count` | number | 分类下 provider 数 |
 | `chains` | array | 当前有 provider 的链 |
 | `chains[].id` | string | 链 ID |
+| `chains[].kind` | string | 链友好类型，例如 `bnb`、`tron` |
+| `chains[].label` | string | 链英文展示名 |
+| `chains[].label_zh` | string | 链中文展示名 |
 | `chains[].count` | number | 链下 provider 数 |
 
 Provider 摘要字段说明：
@@ -180,13 +204,19 @@ Provider 摘要字段说明：
 | --- | --- | --- |
 | `fqn` | string | provider 唯一标识 |
 | `title` | string | 英文标题 |
+| `title_zh` | string | 中文服务名，前端头部第一行可直接使用 |
+| `main_title` | string | 主标题，前端头部第二行可直接使用 |
+| `sub_title` | string | 副标题，前端头部第三行可直接使用 |
 | `subtitle` | string | 英文副标题 |
 | `description` | string | 英文介绍 |
 | `use_case` | string | 英文使用场景 |
 | `i18n.zh-CN` | object | 中文标题、副标题、介绍、使用场景 |
 | `logo` | string | logo URL |
 | `category` | string | 分类 ID |
+| `category_meta` | object | 分类展示信息，包含 `label` 和 `label_zh` |
 | `chains` | string[] | 支持链列表 |
+| `chain_kinds` | string[] | 链友好类型，例如 `bnb`、`tron` |
+| `chains_meta` | array | 链展示信息，不需要前端自己解析 CAIP-2 |
 | `is_first_party` | boolean | 是否自营 |
 | `is_featured` | boolean | 是否精选 |
 | `featured_tags` | string[] | 标签 |
@@ -225,6 +255,9 @@ endpoint 列表
 {
   "fqn": "open-meteo-weather",
   "title": "Open-Meteo Weather API",
+  "title_zh": "Open-Meteo 天气 API",
+  "main_title": "Open-Meteo Weather API",
+  "sub_title": "按经纬度查询实时天气",
   "subtitle": "Coordinate-based current weather",
   "description": "Current weather data from the public Open-Meteo API.",
   "use_case": "Use for current weather lookup when latitude and longitude are already known.",
@@ -238,7 +271,21 @@ endpoint 列表
   },
   "logo": "https://open-meteo.com/favicon.ico",
   "category": "data",
+  "category_meta": {
+    "id": "data",
+    "label": "Data",
+    "label_zh": "数据"
+  },
   "chains": ["eip155:97"],
+  "chain_kinds": ["bnb"],
+  "chains_meta": [
+    {
+      "id": "eip155:97",
+      "kind": "bnb",
+      "label": "BNB Smart Chain Testnet",
+      "label_zh": "BNB 测试网"
+    }
+  ],
   "is_first_party": false,
   "is_featured": true,
   "featured_tags": ["weather", "open-data", "no-api-key"],
@@ -339,6 +386,9 @@ CLI 读取支付调用摘要
   "version": 1,
   "fqn": "open-meteo-weather",
   "title": "Open-Meteo Weather API",
+  "title_zh": "Open-Meteo 天气 API",
+  "main_title": "Open-Meteo Weather API",
+  "sub_title": "按经纬度查询实时天气",
   "subtitle": "Coordinate-based current weather",
   "description": "Current weather data from the public Open-Meteo API.",
   "use_case": "Use for current weather lookup when latitude and longitude are already known.",
@@ -352,6 +402,15 @@ CLI 读取支付调用摘要
   },
   "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
   "chains": ["eip155:97"],
+  "chain_kinds": ["bnb"],
+  "chains_meta": [
+    {
+      "id": "eip155:97",
+      "kind": "bnb",
+      "label": "BNB Smart Chain Testnet",
+      "label_zh": "BNB 测试网"
+    }
+  ],
   "sha": "content-hash",
   "endpoints": [
     {
@@ -413,6 +472,8 @@ GET /api/categories.json
 [
   {
     "id": "data",
+    "label": "Data",
+    "label_zh": "数据",
     "count": 2
   }
 ]
@@ -423,6 +484,7 @@ GET /api/categories.json
 ```text
 categories.json 是 catalog.json 里 frontend.categories 的直接导出。
 如果前端已经请求了 catalog.json，可以直接使用 catalog.frontend.categories，不需要重复请求。
+前端展示文案优先使用 label_zh，不需要自己把 category ID 转中文。
 ```
 
 ## 9. 搜索索引
@@ -479,12 +541,21 @@ GET /api/search-index.json
 
 ## 10. 前端渲染建议
 
+头部三行标题建议直接使用：
+
+```text
+第一行：provider.title_zh
+第二行：provider.main_title
+第三行：provider.sub_title
+```
+
 中文页面：
 
 ```ts
 const zh = provider.i18n?.["zh-CN"];
-const title = zh?.title ?? provider.title;
-const subtitle = zh?.subtitle ?? provider.subtitle;
+const title = provider.title_zh ?? zh?.title ?? provider.title;
+const mainTitle = provider.main_title ?? provider.title;
+const subTitle = provider.sub_title ?? zh?.subtitle ?? provider.subtitle;
 const description = zh?.description ?? provider.description;
 const useCase = zh?.useCase ?? provider.use_case;
 ```
@@ -498,11 +569,29 @@ subtitle / 中文 subtitle
 description / 中文 description
 category
 chains
+category_meta.label_zh
+chains_meta[].label_zh
 featured_tags
 min_price_usd / max_price_usd
 endpoint_count
 has_metering
 has_free_tier
+```
+
+精选展示建议：
+
+```text
+卡片是否显示精选 badge：直接看 provider.is_featured。
+精选分组或首页精选排序：用 catalog.frontend.featured_fqns。
+```
+
+统计字段使用建议：
+
+```text
+provider_count 可以用于顶部统计。
+first_party_count 和 chain_count 是统计信息，前端可以展示，但不建议用它们驱动业务逻辑。
+分类、链筛选项请用 catalog.frontend.categories 和 catalog.frontend.chains。
+不要在前端写死分类和链列表，最多只把兜底展示文案写死。
 ```
 
 详情页建议展示：
@@ -572,6 +661,16 @@ tron:nile    TRON Nile Testnet
 tron:shasta  TRON Shasta Testnet
 ```
 
+前端不需要通过字符串前缀判断链类型。直接使用：
+
+```text
+provider.chain_kinds
+provider.chains_meta[].kind
+provider.chains_meta[].label_zh
+catalog.frontend.chains[].kind
+catalog.frontend.chains[].label_zh
+```
+
 注意：
 
 ```text
@@ -592,8 +691,8 @@ export type CatalogResponse = {
   base_url: string;
   frontend: {
     featured_fqns: string[];
-    categories: Array<{ id: string; count: number }>;
-    chains: Array<{ id: string; count: number }>;
+    categories: Array<CategoryMeta & { count: number }>;
+    chains: Array<ChainMeta & { count: number }>;
   };
   providers: ProviderSummary[];
 };
@@ -605,9 +704,25 @@ export type LocalizedCopy = {
   useCase: string;
 };
 
+export type CategoryMeta = {
+  id: string;
+  label: string;
+  label_zh: string;
+};
+
+export type ChainMeta = {
+  id: string;
+  kind: "bnb" | "tron" | "evm" | "other";
+  label: string;
+  label_zh: string;
+};
+
 export type ProviderSummary = {
   fqn: string;
   title: string;
+  title_zh: string;
+  main_title: string;
+  sub_title: string;
   subtitle: string;
   description: string;
   use_case: string;
@@ -616,7 +731,10 @@ export type ProviderSummary = {
   };
   logo: string;
   category: string;
+  category_meta: CategoryMeta;
   chains: string[];
+  chain_kinds: string[];
+  chains_meta: ChainMeta[];
   is_first_party: boolean;
   is_featured: boolean;
   featured_tags: string[];
@@ -659,6 +777,9 @@ export type PayJson = {
   version: number;
   fqn: string;
   title: string;
+  title_zh: string;
+  main_title: string;
+  sub_title: string;
   subtitle: string;
   description: string;
   use_case: string;
@@ -667,6 +788,8 @@ export type PayJson = {
   };
   service_url: string;
   chains: string[];
+  chain_kinds: string[];
+  chains_meta: ChainMeta[];
   sha: string;
   endpoints: Array<{
     method: string;
