@@ -51,6 +51,20 @@ docker compose pull catalog
 docker compose up -d --no-build catalog
 ```
 
+镜像发布规则和 `x402-facilitator` 保持一致：
+
+```text
+Git tag: test-v* -> Docker image: bankofai/x402-catelog:test
+Git tag: v*      -> Docker image: bankofai/x402-catelog:<tag>
+```
+
+GitHub Actions 需要在本仓库配置以下 secrets：
+
+```text
+DOCKERHUB_USERNAME
+DOCKERHUB_TOKEN
+```
+
 日志路径：
 
 ```text
