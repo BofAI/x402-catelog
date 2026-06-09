@@ -4,9 +4,17 @@ on:
   pull_request:
   push:
     branches: [main, test/open-meteo-catalog-flow]
+    tags: ["tn-test-*", "v*"]
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/bofai/x402-catelog
 
 jobs:
   validate:
@@ -73,10 +81,38 @@ jobs:
           curl -fsS http://127.0.0.1:8088/api/catalog.json > /tmp/catalog.json
           curl -fsS http://127.0.0.1:8088/api/providers/open-meteo-weather.json > /tmp/provider.json
           curl -fsS http://127.0.0.1:8088/api/pay/open-meteo-weather.json > /tmp/pay.json
+          curl -fsS http://127.0.0.1:8088/api/providers/bankofai-llm.json > /tmp/bankofai.json
           python3 -m json.tool /tmp/catalog.json > /dev/null
           python3 -m json.tool /tmp/provider.json > /dev/null
           python3 -m json.tool /tmp/pay.json > /dev/null
+          python3 -m json.tool /tmp/bankofai.json > /dev/null
 
       - name: Stop catalog container
         if: always()
         run: docker rm -f x402-catalog-ci || true
+
+      - name: Login to GHCR
+        if: github.event_name != 'pull_request'
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Push catalog image
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha_tag="sha-${GITHUB_SHA::12}"
+          docker tag x402-catalog:ci "${IMAGE_NAME}:${sha_tag}"
+          docker push "${IMAGE_NAME}:${sha_tag}"
+
+          if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
+            branch_tag="${GITHUB_REF_NAME//\//-}"
+            docker tag x402-catalog:ci "${IMAGE_NAME}:${branch_tag}"
+            docker push "${IMAGE_NAME}:${branch_tag}"
+            if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+              docker tag x402-catalog:ci "${IMAGE_NAME}:latest"
+              docker push "${IMAGE_NAME}:latest"
+            fi
+          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            docker tag x402-catalog:ci "${IMAGE_NAME}:${GITHUB_REF_NAME}"
+            docker push "${IMAGE_NAME}:${GITHUB_REF_NAME}"
+          fi

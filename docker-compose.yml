@@ -1,5 +1,6 @@
 services:
   catalog:
+    image: ${X402_CATALOG_IMAGE:-ghcr.io/bofai/x402-catelog:test-open-meteo-catalog-flow}
     build:
       context: .
       dockerfile: Dockerfile
