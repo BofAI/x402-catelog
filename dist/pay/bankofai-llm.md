@@ -33,32 +33,19 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/complet
   --json '{"model":"MODEL_ID","messages":[{"role":"user","content":"hello"}]}'
 ```
 
-### POST /v1/completions
+### POST /v1/messages
 
-Create a text completion.
+Create a Claude-compatible message.
 
-- URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/completions`
+- URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/messages`
 - Price: `$0.01`
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/completions' \
+x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/messages' \
   --method POST \
-  --json '{"model":"MODEL_ID","prompt":"hello"}'
-```
-
-### POST /v1/embeddings
-
-Create text embeddings.
-
-- URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/embeddings`
-- Price: `$0.005`
-
-```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/embeddings' \
-  --method POST \
-  --json '{"model":"MODEL_ID","input":"hello"}'
+  --json '{"model":"claude-sonnet-4-6","max_tokens":1024,"messages":[{"role":"user","content":"hello"}]}'
 ```
 
 ## Notes
 
-Gateway runtime must configure `BANKOFAI_API_KEY`; this file is public and must not include API keys, bearer tokens, provider.yml, `.env`, passwords, private keys, or private infrastructure URLs.
+Gateway runtime must configure `BANKOFAI_API_KEY`; this file is public and must not include API keys, bearer tokens, provider.yml, `.env`, passwords, private keys, or private infrastructure URLs. BANK OF AI upstream charges by Credits; current x402 gateway pricing is fixed per request until usage-based settlement is enabled.

@@ -13,7 +13,7 @@
       "label_zh": "BNB 测试网"
     }
   ],
-  "description": "OpenAI-compatible LLM APIs provided by BANK OF AI.",
+  "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
   "endpoints": [
     {
       "description": "List available BANK OF AI LLM models.",
@@ -34,40 +34,31 @@
       "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/completions"
     },
     {
-      "description": "Create a text completion.",
+      "description": "Create a Claude-compatible message.",
       "max_price_usd": 0.01,
       "metered": true,
       "method": "POST",
       "min_price_usd": 0.01,
-      "path": "/v1/completions",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/completions"
-    },
-    {
-      "description": "Create text embeddings.",
-      "max_price_usd": 0.005,
-      "metered": true,
-      "method": "POST",
-      "min_price_usd": 0.005,
-      "path": "/v1/embeddings",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/embeddings"
+      "path": "/v1/messages",
+      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/messages"
     }
   ],
   "fqn": "bankofai-llm",
   "i18n": {
     "zh-CN": {
-      "description": "BANK OF AI 提供的 OpenAI-compatible 大模型 API。",
+      "description": "BANK OF AI 提供的大模型 API，包括 OpenAI-compatible 聊天补全和 Claude-compatible Messages。",
       "subtitle": "兼容 OpenAI 的大模型推理接口",
       "title": "BANK OF AI 大模型 API",
-      "useCase": "适合模型列表查询、聊天补全、文本补全和 Embedding。"
+      "useCase": "适合模型列表查询、OpenAI-compatible 聊天补全和 Claude-compatible Messages。"
     }
   },
   "main_title": "BANK OF AI LLM API",
   "service_url": "https://gateway.bankofai.io/providers/bankofai-llm",
-  "sha": "8cf9f220f663a0040e8c0057ac45f216511b8748f6e2e82d5cbb631ad2fceabd",
+  "sha": "e6e59341c985c085e6a577f4d66131078803ac3a5e16f5257cdeb889f3aba08c",
   "sub_title": "兼容 OpenAI 的大模型推理接口",
   "subtitle": "OpenAI-compatible LLM inference",
   "title": "BANK OF AI LLM API",
   "title_zh": "BANK OF AI 大模型 API",
-  "use_case": "Use for model listing, chat completions, text completions, and embeddings.",
+  "use_case": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages.",
   "version": 1
 }

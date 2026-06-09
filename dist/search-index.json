@@ -69,7 +69,7 @@
           "label_zh": "BNB 测试网"
         }
       ],
-      "description": "OpenAI-compatible LLM APIs provided by BANK OF AI.",
+      "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
       "endpoints": [
         {
           "description": "List available BANK OF AI LLM models.",
@@ -84,16 +84,10 @@
           "title": "Chat Completions"
         },
         {
-          "description": "Create a text completion.",
+          "description": "Create a Claude-compatible message.",
           "method": "POST",
-          "path": "/v1/completions",
-          "title": "Text Completions"
-        },
-        {
-          "description": "Create text embeddings.",
-          "method": "POST",
-          "path": "/v1/embeddings",
-          "title": "Embeddings"
+          "path": "/v1/messages",
+          "title": "Messages"
         }
       ],
       "featured_tags": [
@@ -106,7 +100,7 @@
       "service_url": "https://gateway.bankofai.io/providers/bankofai-llm",
       "subtitle": "OpenAI-compatible LLM inference",
       "title": "BANK OF AI LLM API",
-      "use_case": "Use for model listing, chat completions, text completions, and embeddings."
+      "use_case": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages."
     },
     {
       "category": "data",
@@ -150,6 +144,6 @@
       "use_case": "Use for current weather lookup when latitude and longitude are already known."
     }
   ],
-  "generated_at": "2026-06-09T06:59:58Z",
+  "generated_at": "2026-06-09T07:17:16Z",
   "version": 1
 }

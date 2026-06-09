@@ -3,14 +3,14 @@
   "fqn": "bankofai-llm",
   "title": "BANK OF AI LLM API",
   "subtitle": "OpenAI-compatible LLM inference",
-  "description": "OpenAI-compatible LLM APIs provided by BANK OF AI.",
-  "useCase": "Use for model listing, chat completions, text completions, and embeddings.",
+  "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
+  "useCase": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages.",
   "i18n": {
     "zh-CN": {
       "title": "BANK OF AI 大模型 API",
       "subtitle": "兼容 OpenAI 的大模型推理接口",
-      "description": "BANK OF AI 提供的 OpenAI-compatible 大模型 API。",
-      "useCase": "适合模型列表查询、聊天补全、文本补全和 Embedding。"
+      "description": "BANK OF AI 提供的大模型 API，包括 OpenAI-compatible 聊天补全和 Claude-compatible Messages。",
+      "useCase": "适合模型列表查询、OpenAI-compatible 聊天补全和 Claude-compatible Messages。"
     }
   },
   "logo": "https://bankofai.io/favicon.ico",
@@ -63,43 +63,23 @@
     },
     {
       "method": "POST",
-      "path": "/v1/completions",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/completions",
-      "title": "Text Completions",
-      "subtitle": "Prompt completion",
-      "description": "Create a text completion.",
-      "useCase": "Use for legacy prompt-style text generation.",
+      "path": "/v1/messages",
+      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/messages",
+      "title": "Messages",
+      "subtitle": "Claude-compatible messages",
+      "description": "Create a Claude-compatible message.",
+      "useCase": "Use for Anthropic-style message requests with Claude-compatible models.",
       "i18n": {
         "zh-CN": {
-          "title": "文本补全",
-          "subtitle": "Prompt 文本生成",
-          "description": "创建文本补全结果。",
-          "useCase": "适合传统 prompt 风格的文本生成。"
+          "title": "Messages",
+          "subtitle": "Claude-compatible 消息接口",
+          "description": "创建 Claude-compatible message。",
+          "useCase": "适合使用 Claude-compatible 模型的 Anthropic 风格消息请求。"
         }
       },
       "metered": true,
       "minPriceUsd": 0.01,
       "maxPriceUsd": 0.01
-    },
-    {
-      "method": "POST",
-      "path": "/v1/embeddings",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/embeddings",
-      "title": "Embeddings",
-      "subtitle": "Vector embeddings",
-      "description": "Create text embeddings.",
-      "useCase": "Use for semantic search, retrieval, clustering, and vector indexing.",
-      "i18n": {
-        "zh-CN": {
-          "title": "Embedding",
-          "subtitle": "向量表示",
-          "description": "创建文本 Embedding 向量。",
-          "useCase": "适合语义搜索、检索、聚类和向量索引。"
-        }
-      },
-      "metered": true,
-      "minPriceUsd": 0.005,
-      "maxPriceUsd": 0.005
     }
   ],
   "status": {
