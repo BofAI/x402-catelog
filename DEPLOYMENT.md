@@ -43,6 +43,20 @@ docker compose build catalog
 docker compose up -d catalog
 ```
 
+日志路径：
+
+```text
+容器内：/app/log/catalog.log
+宿主机：./log/catalog.log
+```
+
+查看日志：
+
+```bash
+docker compose logs -f catalog
+tail -f ./log/catalog.log
+```
+
 默认监听：
 
 ```text

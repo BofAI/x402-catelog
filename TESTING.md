@@ -79,6 +79,8 @@ docker compose up -d catalog
 
 ```bash
 docker compose ps catalog
+test -f ./log/catalog.log
+tail -n 20 ./log/catalog.log
 ```
 
 期望状态包含：
