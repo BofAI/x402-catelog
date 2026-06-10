@@ -2,6 +2,10 @@
 
 本文档用于部署 Catalog 测试环境，并说明它如何和 Gateway、前端联调。Catalog 一期是静态 JSON 服务，不需要数据库，不保存用户 API key、钱包私钥、`provider.yml` 或 `.env`。
 
+## English Summary
+
+This document explains how to deploy the Catalog test environment and connect it with Gateway and frontend development. Catalog is a static JSON service in the first phase. It does not use a database and does not store user API keys, wallet private keys, `provider.yml`, or `.env`.
+
 ## 1. 部署目标
 
 测试环境建议拆成两个服务：

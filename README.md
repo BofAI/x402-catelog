@@ -2,6 +2,15 @@
 
 `x402-catelog` 是 BankofAI 维护的公开 x402 服务目录仓库。一期不保存数据库，也不接收任何上游 API key、token、password、provider.yml 或 `.env`。
 
+## English Summary
+
+`x402-catelog` is the public x402 service catalog maintained by BankofAI. The first version is a static JSON catalog: it does not use a database and does not accept upstream API keys, tokens, passwords, `provider.yml`, or `.env` files.
+
+Providers run their own Gateway and submit only public discovery files:
+
+- `providers/<fqn>/catalog.json`
+- `providers/<fqn>/pay.md`
+
 社区提交流程和可复制命令见 [`examples/README.md`](examples/README.md)。
 前端和测试环境调试流程见 [`TESTING.md`](TESTING.md)。
 前端接口文档见 [`API.md`](API.md)。

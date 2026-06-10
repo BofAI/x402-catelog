@@ -2,6 +2,12 @@
 
 本文档给前端开发使用。Catalog API 一期是静态 JSON 服务，不需要登录，不保存数据库，不返回任何上游 API key、钱包私钥、`provider.yml` 或 `.env`。
 
+## English Summary
+
+This document is for frontend developers. The Catalog API is a static JSON API in the first phase. It requires no login, has no database, and never returns upstream API keys, wallet private keys, `provider.yml`, or `.env` content.
+
+All API paths currently use explicit `.json` or `.md` suffixes because the Catalog Server serves static files.
+
 ## 1. Base URL
 
 本地开发：

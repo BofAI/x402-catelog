@@ -1,5 +1,27 @@
 # x402 Catalog Submission Examples
 
+## 中文说明
+
+这里说明服务方如何向公开 Catalog 仓库提交资料。Catalog 仓库只保存公开发现数据，不保存任何私有运行时配置。
+
+服务方流程：
+
+1. 自己启动 Gateway，并把 `provider.yml`、API key、钱包私钥留在自己的运行环境。
+2. 使用 `x402-cli catalog export-gateway` 导出公开文件。
+3. 只提交 `providers/<fqn>/catalog.json` 和 `providers/<fqn>/pay.md`。
+4. 提 PR，CI 会校验字段和敏感信息。
+
+不要提交：
+
+- `provider.yml`
+- `.env`
+- 上游 API key
+- bearer token
+- 钱包私钥
+- 内网地址
+
+## English
+
 This repository stores public discovery data for x402 providers. It does not
 store provider secrets, upstream API keys, private gateway configuration, or
 `provider.yml` files.
