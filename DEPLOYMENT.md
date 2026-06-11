@@ -11,14 +11,14 @@ This document explains how to deploy the Catalog test environment and connect it
 测试环境建议拆成两个服务：
 
 ```text
-Catalog TN: https://catalog-tn.example.com/api
-Gateway TN: https://gateway-tn.example.com
+Catalog TN: https://tm-x402-catelog.bankofai.io/api
+Gateway TN: https://tm-x402-gateway.bankofai.io
 ```
 
 前端只配置 Catalog API：
 
 ```text
-VITE_X402_CATALOG_API=https://catalog-tn.example.com/api
+VITE_X402_CATALOG_API=https://tm-x402-catelog.bankofai.io/api
 ```
 
 Catalog 返回 provider 列表和 endpoint URL；真正调用 API 时，前端或 CLI 使用 catalog 返回的 `endpoint.url`，也就是 Gateway 地址。
@@ -121,7 +121,7 @@ Nginx 示例：
 ```nginx
 server {
     listen 443 ssl;
-    server_name catalog-tn.example.com;
+    server_name tm-x402-catelog.bankofai.io;
 
     location /api/ {
         proxy_pass http://127.0.0.1:8088/api/;
@@ -135,8 +135,8 @@ server {
 验证：
 
 ```bash
-curl -fsS https://catalog-tn.example.com/api/status.json
-curl -fsS https://catalog-tn.example.com/api/catalog.json
+curl -fsS https://tm-x402-catelog.bankofai.io/api/status.json
+curl -fsS https://tm-x402-catelog.bankofai.io/api/catalog.json
 ```
 
 ## 4. 前端配置
@@ -144,13 +144,13 @@ curl -fsS https://catalog-tn.example.com/api/catalog.json
 Vite：
 
 ```bash
-VITE_X402_CATALOG_API=https://catalog-tn.example.com/api
+VITE_X402_CATALOG_API=https://tm-x402-catelog.bankofai.io/api
 ```
 
 Next.js：
 
 ```bash
-NEXT_PUBLIC_X402_CATALOG_API=https://catalog-tn.example.com/api
+NEXT_PUBLIC_X402_CATALOG_API=https://tm-x402-catelog.bankofai.io/api
 ```
 
 前端主要读取：
@@ -178,7 +178,7 @@ branch: feature/0.6.1-gateway-init
 Catalog 里的 provider endpoint 需要指向 Gateway TN，例如：
 
 ```text
-https://gateway-tn.example.com/providers/open-meteo-weather/v1/forecast
+https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather/v1/forecast
 ```
 
 如果 Gateway 域名变化，需要重新生成或更新 Catalog 里的公开文件：
@@ -277,8 +277,8 @@ curl -fsS http://127.0.0.1:8088/api/status.json
 
 ```text
 Catalog 容器 healthy
-https://catalog-tn.example.com/api/status.json 返回 ok
-https://catalog-tn.example.com/api/catalog.json 返回 provider_count > 0
+https://tm-x402-catelog.bankofai.io/api/status.json 返回 ok
+https://tm-x402-catelog.bankofai.io/api/catalog.json 返回 provider_count > 0
 open-meteo-weather 详情返回 title_zh/main_title/sub_title
 open-meteo-weather 详情返回 chain_kinds/category_meta
 前端能读取 Catalog API 并渲染列表和详情

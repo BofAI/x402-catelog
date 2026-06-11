@@ -3,13 +3,13 @@
   "fqn": "bankofai-llm",
   "title": "BANK OF AI LLM API",
   "subtitle": "OpenAI-compatible LLM inference",
-  "description": "BANK OF AI LLM API provides paid access to first-party model inference through x402. It exposes model discovery, OpenAI-compatible chat completions, and Claude-compatible messages so agents, scripts, and applications can call LLMs without embedding an upstream BANK OF AI API key.",
+  "description": "## What it does\n\nBANK OF AI LLM API gives agents, scripts, and applications paid access to first-party large-language-model inference through x402. It supports model discovery, OpenAI-compatible chat completions, and Claude-compatible messages without exposing an upstream BANK OF AI API key to the caller.\n\n## Best for\n\n- AI agents that need on-demand reasoning, summarization, extraction, classification, or content generation.\n- Developer tools and scripts that want to call LLMs from the command line with per-request x402 payment.\n- Apps that already speak OpenAI Chat Completions or Anthropic Messages style payloads.\n- Workflows that need stablecoin payment on BSC Testnet or TRON Nile before forwarding to the upstream model API.\n\n## Quick start\n\nInstall the payment client:\n\n```bash\npip install bankofai-x402-cli==0.6.1b3\nx402-cli --version\n```\n\nList models on BSC Testnet:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \\\n  --network eip155:97 \\\n  --token USDT \\\n  --scheme exact_permit\n```\n\nList models on TRON Nile:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \\\n  --network tron:nile \\\n  --token USDT \\\n  --scheme exact_gasfree\n```\n\nFor chat generation, call `/v1/chat/completions`; for Claude-style clients, call `/v1/messages`.",
   "useCase": "Use this provider when an app, agent, or CLI workflow needs on-demand LLM inference with x402 payment. Start with /v1/models to choose a model, then call /v1/chat/completions for OpenAI-style requests or /v1/messages for Claude-style message payloads.",
   "i18n": {
     "zh-CN": {
       "title": "BANK OF AI 大模型 API",
       "subtitle": "兼容 OpenAI 的大模型推理接口",
-      "description": "BANK OF AI 大模型 API 通过 x402 提供付费模型推理能力，包含模型发现、OpenAI-compatible 聊天补全和 Claude-compatible Messages。调用方不需要暴露上游 BANK OF AI API key，可以通过 CLI、Agent 或应用按次支付调用。",
+      "description": "## 能做什么\n\nBANK OF AI 大模型 API 通过 x402 提供按次付费的大模型推理能力。它支持模型发现、OpenAI-compatible 聊天补全和 Claude-compatible Messages，调用方不需要暴露上游 BANK OF AI API key。\n\n## 适合场景\n\n- AI Agent 的推理、总结、信息抽取、分类和内容生成。\n- 需要从命令行或脚本里按次付费调用 LLM 的开发者工具。\n- 已经兼容 OpenAI Chat Completions 或 Anthropic Messages 请求格式的应用。\n- 需要先通过 BSC Testnet 或 TRON Nile stablecoin 支付，再转发到上游模型 API 的测试流程。\n\n## Quick start\n\n安装支付客户端：\n\n```bash\npip install bankofai-x402-cli==0.6.1b3\nx402-cli --version\n```\n\n在 BSC Testnet 查询模型：\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \\\n  --network eip155:97 \\\n  --token USDT \\\n  --scheme exact_permit\n```\n\n在 TRON Nile 查询模型：\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \\\n  --network tron:nile \\\n  --token USDT \\\n  --scheme exact_gasfree\n```\n\n生成对话内容使用 `/v1/chat/completions`；Claude 风格客户端使用 `/v1/messages`。",
       "useCase": "适合需要按次付费调用大模型的应用、Agent 和命令行流程。先用 /v1/models 查询可用模型，再用 /v1/chat/completions 发起 OpenAI 风格请求，或用 /v1/messages 发起 Claude 风格消息请求。"
     }
   },
@@ -24,19 +24,19 @@
     {
       "method": "GET",
       "path": "/v1/models",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models",
       "x402Routes": [
         {
           "network": "eip155:97",
           "provider": "bankofai-llm-bsc",
           "scheme": "exact_permit",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models"
         },
         {
           "network": "tron:nile",
           "provider": "bankofai-llm-tron-nile",
           "scheme": "exact_gasfree",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models"
         }
       ],
       "title": "List Models",
@@ -58,19 +58,19 @@
     {
       "method": "POST",
       "path": "/v1/chat/completions",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions",
       "x402Routes": [
         {
           "network": "eip155:97",
           "provider": "bankofai-llm-bsc",
           "scheme": "exact_permit",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions"
         },
         {
           "network": "tron:nile",
           "provider": "bankofai-llm-tron-nile",
           "scheme": "exact_gasfree",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/chat/completions"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/chat/completions"
         }
       ],
       "title": "Chat Completions",
@@ -92,19 +92,19 @@
     {
       "method": "POST",
       "path": "/v1/messages",
-      "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages",
       "x402Routes": [
         {
           "network": "eip155:97",
           "provider": "bankofai-llm-bsc",
           "scheme": "exact_permit",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages"
         },
         {
           "network": "tron:nile",
           "provider": "bankofai-llm-tron-nile",
           "scheme": "exact_gasfree",
-          "url": "https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages"
+          "url": "https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages"
         }
       ],
       "title": "Messages",

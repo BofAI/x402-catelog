@@ -19,7 +19,7 @@ http://127.0.0.1:8088/api
 测试或生产环境按部署域名替换：
 
 ```text
-https://catalog.bankofai.io/api
+https://tm-x402-catelog.bankofai.io/api
 ```
 
 前端建议使用环境变量：
@@ -108,7 +108,7 @@ GET /api/catalog.json
   "provider_count": 2,
   "first_party_count": 0,
   "chain_count": 3,
-  "base_url": "https://catalog.bankofai.io/api",
+  "base_url": "https://tm-x402-catelog.bankofai.io/api",
   "frontend": {
     "featured_fqns": ["open-meteo-weather"],
     "categories": [
@@ -162,7 +162,7 @@ GET /api/catalog.json
       "is_first_party": false,
       "is_featured": true,
       "featured_tags": ["weather", "open-data", "no-api-key"],
-      "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
+      "service_url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather",
       "endpoint_count": 1,
       "has_metering": true,
       "has_free_tier": false,
@@ -295,7 +295,7 @@ endpoint 列表
   "is_first_party": false,
   "is_featured": true,
   "featured_tags": ["weather", "open-data", "no-api-key"],
-  "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
+  "service_url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather",
   "endpoint_count": 1,
   "has_metering": true,
   "has_free_tier": false,
@@ -312,7 +312,7 @@ endpoint 列表
     {
       "method": "GET",
       "path": "/v1/forecast",
-      "url": "https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather/v1/forecast",
       "title": "Current Weather",
       "subtitle": "Lookup by coordinates",
       "description": "Current weather for latitude and longitude coordinates.",
@@ -406,7 +406,7 @@ CLI 读取支付调用摘要
       "useCase": "适合在已知经纬度时查询实时天气。"
     }
   },
-  "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
+  "service_url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather",
   "chains": ["eip155:97"],
   "chain_kinds": ["bnb"],
   "chains_meta": [
@@ -422,7 +422,7 @@ CLI 读取支付调用摘要
     {
       "method": "GET",
       "path": "/v1/forecast",
-      "url": "https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather/v1/forecast",
       "description": "Current weather for latitude and longitude coordinates.",
       "metered": true,
       "min_price_usd": 0.001,
@@ -523,7 +523,7 @@ GET /api/search-index.json
       "category": "data",
       "chains": ["eip155:97"],
       "featured_tags": ["weather", "open-data", "no-api-key"],
-      "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
+      "service_url": "https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather",
       "endpoints": [
         {
           "method": "GET",
@@ -646,7 +646,7 @@ provider 卡片上的 chains badge
 CLI 调用代码默认不需要指定链：
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
 ```
 
 如果用户明确要限制某条链，可以展示为高级用法：
@@ -654,7 +654,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/open-meteo-weather/v1/foreca
 ```bash
 x402-cli pay \
   --network eip155:97 \
-  'https://gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
+  'https://tm-x402-gateway.bankofai.io/providers/open-meteo-weather/v1/forecast?latitude=31.2304&longitude=121.4737&current=temperature_2m&timezone=auto'
 ```
 
 `--network` 使用 CAIP-2 ID，例如：

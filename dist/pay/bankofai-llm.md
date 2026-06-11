@@ -10,15 +10,15 @@ Use it when you want an agent, CLI script, backend service, or test workflow to 
 - Service URL: `https://chat-stg.bankofai.io/chat`
 - Category: `ai_ml`
 - Chains: `eip155:97`, `tron:nile`
-- BSC gateway base: `https://gateway.bankofai.io/providers/bankofai-llm-bsc`
-- TRON Nile gateway base: `https://gateway.bankofai.io/providers/bankofai-llm-tron-nile`
+- BSC gateway base: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc`
+- TRON Nile gateway base: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile`
 
 ## CLI quick start
 
 Install or update the x402 CLI, then use `x402-cli pay` against the gateway endpoint URL. The CLI first receives a `402 Payment Required` challenge, signs the payment with your configured wallet, retries the request with the payment header, and prints the upstream response.
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
   --network eip155:97 \
   --token USDT \
   --scheme exact_permit
@@ -27,7 +27,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' 
 TRON Nile is exposed through a separate gateway provider route because the gateway binds one payment network per provider:
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \
   --network tron:nile \
   --token USDT \
   --scheme exact_gasfree
@@ -36,7 +36,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/mo
 For JSON APIs, pass the HTTP method and request body:
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions' \
   --method POST \
   --network eip155:97 \
   --token USDT \
@@ -55,7 +55,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/com
 If your CLI environment supports explicit payment limits, set the maximum amount to the endpoint price or slightly above it. For example:
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
   --network eip155:97 \
   --token USDT \
   --scheme exact_permit \
@@ -70,12 +70,12 @@ Use the model list response to replace `MODEL_ID` in generation examples.
 
 List available BANK OF AI LLM models. Use this before generation calls to confirm the model IDs currently exposed by the gateway.
 
-- BSC Testnet URL: `https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models`
-- TRON Nile URL: `https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models`
+- BSC Testnet URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models`
+- TRON Nile URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models`
 - Price: `$0.001`
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \
   --network eip155:97 \
   --token USDT \
   --scheme exact_permit
@@ -85,12 +85,12 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' 
 
 Create an OpenAI-compatible chat completion from a `model` and `messages` array. This is the recommended endpoint for OpenAI-style clients, agent loops, and general assistant responses.
 
-- BSC Testnet URL: `https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions`
-- TRON Nile URL: `https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/chat/completions`
+- BSC Testnet URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions`
+- TRON Nile URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/chat/completions`
 - Price: `$0.01`
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/completions' \
   --method POST \
   --network eip155:97 \
   --token USDT \
@@ -102,12 +102,12 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/chat/com
 
 Create a Claude-compatible response with an Anthropic-style request body. Use this when your application already formats prompts as `messages` plus `max_tokens`.
 
-- BSC Testnet URL: `https://gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages`
-- TRON Nile URL: `https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages`
+- BSC Testnet URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/messages`
+- TRON Nile URL: `https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages`
 - Price: `$0.01`
 
 ```bash
-x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages' \
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/messages' \
   --method POST \
   --network tron:nile \
   --token USDT \
