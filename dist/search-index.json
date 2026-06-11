@@ -1,54 +1,6 @@
 {
   "documents": [
     {
-      "category": "data",
-      "category_meta": {
-        "id": "data",
-        "label": "Data",
-        "label_zh": "数据"
-      },
-      "chain_kinds": [
-        "bnb",
-        "tron"
-      ],
-      "chains": [
-        "tron:mainnet",
-        "eip155:56"
-      ],
-      "chains_meta": [
-        {
-          "id": "tron:mainnet",
-          "kind": "tron",
-          "label": "TRON Mainnet",
-          "label_zh": "TRON 主网"
-        },
-        {
-          "id": "eip155:56",
-          "kind": "bnb",
-          "label": "BNB Chain",
-          "label_zh": "BNB Chain"
-        }
-      ],
-      "description": "Current weather data for city-level applications.",
-      "endpoints": [
-        {
-          "description": "Current weather for a city.",
-          "method": "GET",
-          "path": "/v1/current",
-          "title": "Current Weather"
-        }
-      ],
-      "featured_tags": [
-        "weather",
-        "data"
-      ],
-      "fqn": "acme-weather",
-      "service_url": "https://gateway.bankofai.io/providers/acme-weather",
-      "subtitle": "City-level weather lookup",
-      "title": "Acme Weather API",
-      "use_case": "Use for current weather lookup by city."
-    },
-    {
       "category": "ai_ml",
       "category_meta": {
         "id": "ai_ml",
@@ -69,22 +21,22 @@
           "label_zh": "BNB 测试网"
         }
       ],
-      "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
+      "description": "BANK OF AI LLM API provides paid access to first-party model inference through x402. It exposes model discovery, OpenAI-compatible chat completions, and Claude-compatible messages so agents, scripts, and applications can call LLMs without embedding an upstream BANK OF AI API key.",
       "endpoints": [
         {
-          "description": "List available BANK OF AI LLM models.",
+          "description": "Return the BANK OF AI models currently exposed by the gateway, including identifiers that can be used in subsequent generation requests.",
           "method": "GET",
           "path": "/v1/models",
           "title": "List Models"
         },
         {
-          "description": "Create a chat completion.",
+          "description": "Create an OpenAI-compatible chat completion from a messages array, model ID, and generation options.",
           "method": "POST",
           "path": "/v1/chat/completions",
           "title": "Chat Completions"
         },
         {
-          "description": "Create a Claude-compatible message.",
+          "description": "Create a Claude-compatible response using an Anthropic-style messages payload.",
           "method": "POST",
           "path": "/v1/messages",
           "title": "Messages"
@@ -97,53 +49,12 @@
         "first-party"
       ],
       "fqn": "bankofai-llm",
-      "service_url": "https://gateway.bankofai.io/providers/bankofai-llm",
+      "service_url": "https://chat-stg.bankofai.io/chat",
       "subtitle": "OpenAI-compatible LLM inference",
       "title": "BANK OF AI LLM API",
-      "use_case": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages."
-    },
-    {
-      "category": "data",
-      "category_meta": {
-        "id": "data",
-        "label": "Data",
-        "label_zh": "数据"
-      },
-      "chain_kinds": [
-        "bnb"
-      ],
-      "chains": [
-        "eip155:97"
-      ],
-      "chains_meta": [
-        {
-          "id": "eip155:97",
-          "kind": "bnb",
-          "label": "BNB Smart Chain Testnet",
-          "label_zh": "BNB 测试网"
-        }
-      ],
-      "description": "Current weather data from the public Open-Meteo API.",
-      "endpoints": [
-        {
-          "description": "Current weather for latitude and longitude coordinates.",
-          "method": "GET",
-          "path": "/v1/forecast",
-          "title": "Current Weather"
-        }
-      ],
-      "featured_tags": [
-        "weather",
-        "open-data",
-        "no-api-key"
-      ],
-      "fqn": "open-meteo-weather",
-      "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
-      "subtitle": "Coordinate-based current weather",
-      "title": "Open-Meteo Weather API",
-      "use_case": "Use for current weather lookup when latitude and longitude are already known."
+      "use_case": "Use this provider when an app, agent, or CLI workflow needs on-demand LLM inference with x402 payment. Start with /v1/models to choose a model, then call /v1/chat/completions for OpenAI-style requests or /v1/messages for Claude-style message payloads."
     }
   ],
-  "generated_at": "2026-06-09T07:17:16Z",
+  "generated_at": "2026-06-11T04:23:35Z",
   "version": 1
 }

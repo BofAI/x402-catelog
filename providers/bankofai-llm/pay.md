@@ -1,17 +1,55 @@
 # BANK OF AI LLM API
 
+BANK OF AI LLM API is a first-party x402 provider for paid large-language-model inference. It exposes familiar API shapes for model listing, OpenAI-compatible chat completions, and Claude-compatible messages while the gateway handles x402 payment and upstream authentication.
+
+Use it when you want an agent, CLI script, backend service, or test workflow to pay per request and call LLM endpoints without shipping a BANK OF AI upstream API key in the client.
+
 ## Service
 
 - FQN: `bankofai-llm`
-- Service URL: `https://gateway.bankofai.io/providers/bankofai-llm`
+- Service URL: `https://chat-stg.bankofai.io/chat`
 - Category: `ai_ml`
 - Chains: `eip155:97`
+- Gateway API base: `https://gateway.bankofai.io/providers/bankofai-llm`
+
+## CLI quick start
+
+Install or update the x402 CLI, then use `x402-cli pay` against the gateway endpoint URL. The CLI first receives a `402 Payment Required` challenge, signs the payment with your configured wallet, retries the request with the payment header, and prints the upstream response.
+
+```bash
+x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/models'
+```
+
+For JSON APIs, pass the HTTP method and request body:
+
+```bash
+x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/completions' \
+  --method POST \
+  --json '{
+    "model": "MODEL_ID",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Explain x402 payments in one paragraph."
+      }
+    ]
+  }'
+```
+
+If your CLI environment supports explicit payment limits, set the maximum amount to the endpoint price or slightly above it. For example:
+
+```bash
+x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/models' \
+  --max-amount 0.001
+```
+
+Use the model list response to replace `MODEL_ID` in generation examples.
 
 ## Endpoints
 
 ### GET /v1/models
 
-List available BANK OF AI LLM models.
+List available BANK OF AI LLM models. Use this before generation calls to confirm the model IDs currently exposed by the gateway.
 
 - URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/models`
 - Price: `$0.001`
@@ -22,7 +60,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/models'
 
 ### POST /v1/chat/completions
 
-Create a chat completion.
+Create an OpenAI-compatible chat completion from a `model` and `messages` array. This is the recommended endpoint for OpenAI-style clients, agent loops, and general assistant responses.
 
 - URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/completions`
 - Price: `$0.01`
@@ -35,7 +73,7 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/complet
 
 ### POST /v1/messages
 
-Create a Claude-compatible message.
+Create a Claude-compatible response with an Anthropic-style request body. Use this when your application already formats prompts as `messages` plus `max_tokens`.
 
 - URL: `https://gateway.bankofai.io/providers/bankofai-llm/v1/messages`
 - Price: `$0.01`
@@ -46,6 +84,13 @@ x402-cli pay 'https://gateway.bankofai.io/providers/bankofai-llm/v1/messages' \
   --json '{"model":"claude-sonnet-4-6","max_tokens":1024,"messages":[{"role":"user","content":"hello"}]}'
 ```
 
+## Integration notes
+
+- The catalog `service_url` points to the staging chat entry page: `https://chat-stg.bankofai.io/chat`.
+- The endpoint URLs above are the x402 gateway URLs that the CLI should call.
+- The public catalog does not contain upstream credentials. The gateway operator keeps the BANK OF AI upstream key in the gateway runtime.
+- Current listed prices are fixed per request for the test catalog. Usage-based settlement can be added later without changing the public discovery shape.
+
 ## Notes
 
-Gateway runtime must configure `BANKOFAI_API_KEY`; this file is public and must not include API keys, bearer tokens, provider.yml, `.env`, passwords, private keys, or private infrastructure URLs. BANK OF AI upstream charges by Credits; current x402 gateway pricing is fixed per request until usage-based settlement is enabled.
+This file is public and must not include API keys, bearer tokens, provider.yml, `.env`, passwords, private keys, or private infrastructure URLs.

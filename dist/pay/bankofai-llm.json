@@ -13,10 +13,10 @@
       "label_zh": "BNB 测试网"
     }
   ],
-  "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
+  "description": "BANK OF AI LLM API provides paid access to first-party model inference through x402. It exposes model discovery, OpenAI-compatible chat completions, and Claude-compatible messages so agents, scripts, and applications can call LLMs without embedding an upstream BANK OF AI API key.",
   "endpoints": [
     {
-      "description": "List available BANK OF AI LLM models.",
+      "description": "Return the BANK OF AI models currently exposed by the gateway, including identifiers that can be used in subsequent generation requests.",
       "max_price_usd": 0.001,
       "metered": true,
       "method": "GET",
@@ -25,7 +25,7 @@
       "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/models"
     },
     {
-      "description": "Create a chat completion.",
+      "description": "Create an OpenAI-compatible chat completion from a messages array, model ID, and generation options.",
       "max_price_usd": 0.01,
       "metered": true,
       "method": "POST",
@@ -34,7 +34,7 @@
       "url": "https://gateway.bankofai.io/providers/bankofai-llm/v1/chat/completions"
     },
     {
-      "description": "Create a Claude-compatible message.",
+      "description": "Create a Claude-compatible response using an Anthropic-style messages payload.",
       "max_price_usd": 0.01,
       "metered": true,
       "method": "POST",
@@ -46,19 +46,19 @@
   "fqn": "bankofai-llm",
   "i18n": {
     "zh-CN": {
-      "description": "BANK OF AI 提供的大模型 API，包括 OpenAI-compatible 聊天补全和 Claude-compatible Messages。",
+      "description": "BANK OF AI 大模型 API 通过 x402 提供付费模型推理能力，包含模型发现、OpenAI-compatible 聊天补全和 Claude-compatible Messages。调用方不需要暴露上游 BANK OF AI API key，可以通过 CLI、Agent 或应用按次支付调用。",
       "subtitle": "兼容 OpenAI 的大模型推理接口",
       "title": "BANK OF AI 大模型 API",
-      "useCase": "适合模型列表查询、OpenAI-compatible 聊天补全和 Claude-compatible Messages。"
+      "useCase": "适合需要按次付费调用大模型的应用、Agent 和命令行流程。先用 /v1/models 查询可用模型，再用 /v1/chat/completions 发起 OpenAI 风格请求，或用 /v1/messages 发起 Claude 风格消息请求。"
     }
   },
   "main_title": "BANK OF AI LLM API",
-  "service_url": "https://gateway.bankofai.io/providers/bankofai-llm",
-  "sha": "e6e59341c985c085e6a577f4d66131078803ac3a5e16f5257cdeb889f3aba08c",
-  "sub_title": "兼容 OpenAI 的大模型推理接口",
+  "service_url": "https://chat-stg.bankofai.io/chat",
+  "sha": "4dc0009d0b3df2320047520231aa388ad02bcc2d4def2334c71ce3d04410c29e",
+  "sub_title": "OpenAI-compatible LLM inference",
   "subtitle": "OpenAI-compatible LLM inference",
   "title": "BANK OF AI LLM API",
   "title_zh": "BANK OF AI 大模型 API",
-  "use_case": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages.",
+  "use_case": "Use this provider when an app, agent, or CLI workflow needs on-demand LLM inference with x402 payment. Start with /v1/models to choose a model, then call /v1/chat/completions for OpenAI-style requests or /v1/messages for Claude-style message payloads.",
   "version": 1
 }

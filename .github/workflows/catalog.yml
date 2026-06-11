@@ -37,7 +37,7 @@ jobs:
           test -f dist/categories.json
           test -f dist/search-index.json
 
-      - name: Check Open-Meteo test provider is discoverable
+      - name: Check BANK OF AI LLM provider is discoverable
         run: |
           python3 - <<'PY'
           import json
@@ -45,7 +45,7 @@ jobs:
 
           catalog = json.loads(Path("dist/catalog.json").read_text())
           fqns = {provider["fqn"] for provider in catalog["providers"]}
-          assert "open-meteo-weather" in fqns, fqns
+          assert fqns == {"bankofai-llm"}, fqns
           PY
 
       - name: Upload static catalog snapshot
@@ -84,13 +84,11 @@ jobs:
       - name: Smoke HTTP API
         run: |
           curl -fsS http://127.0.0.1:8088/api/catalog.json > /tmp/catalog.json
-          curl -fsS http://127.0.0.1:8088/api/providers/open-meteo-weather.json > /tmp/provider.json
-          curl -fsS http://127.0.0.1:8088/api/pay/open-meteo-weather.json > /tmp/pay.json
-          curl -fsS http://127.0.0.1:8088/api/providers/bankofai-llm.json > /tmp/bankofai.json
+          curl -fsS http://127.0.0.1:8088/api/providers/bankofai-llm.json > /tmp/provider.json
+          curl -fsS http://127.0.0.1:8088/api/pay/bankofai-llm.json > /tmp/pay.json
           python3 -m json.tool /tmp/catalog.json > /dev/null
           python3 -m json.tool /tmp/provider.json > /dev/null
           python3 -m json.tool /tmp/pay.json > /dev/null
-          python3 -m json.tool /tmp/bankofai.json > /dev/null
 
       - name: Stop catalog container
         if: always()

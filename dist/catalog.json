@@ -1,6 +1,6 @@
 {
   "base_url": "https://catalog.bankofai.io/api",
-  "chain_count": 3,
+  "chain_count": 1,
   "first_party_count": 1,
   "frontend": {
     "categories": [
@@ -9,45 +9,23 @@
         "id": "ai_ml",
         "label": "AI/ML",
         "label_zh": "AI / 机器学习"
-      },
-      {
-        "count": 2,
-        "id": "data",
-        "label": "Data",
-        "label_zh": "数据"
       }
     ],
     "chains": [
       {
         "count": 1,
-        "id": "eip155:56",
-        "kind": "bnb",
-        "label": "BNB Chain",
-        "label_zh": "BNB Chain"
-      },
-      {
-        "count": 2,
         "id": "eip155:97",
         "kind": "bnb",
         "label": "BNB Smart Chain Testnet",
         "label_zh": "BNB 测试网"
-      },
-      {
-        "count": 1,
-        "id": "tron:mainnet",
-        "kind": "tron",
-        "label": "TRON Mainnet",
-        "label_zh": "TRON 主网"
       }
     ],
     "featured_fqns": [
-      "bankofai-llm",
-      "acme-weather",
-      "open-meteo-weather"
+      "bankofai-llm"
     ]
   },
-  "generated_at": "2026-06-09T07:17:16Z",
-  "provider_count": 3,
+  "generated_at": "2026-06-11T04:23:35Z",
+  "provider_count": 1,
   "providers": [
     {
       "category": "ai_ml",
@@ -70,7 +48,7 @@
           "label_zh": "BNB 测试网"
         }
       ],
-      "description": "LLM APIs provided by BANK OF AI, including OpenAI-compatible chat completions and Claude-compatible messages.",
+      "description": "BANK OF AI LLM API provides paid access to first-party model inference through x402. It exposes model discovery, OpenAI-compatible chat completions, and Claude-compatible messages so agents, scripts, and applications can call LLMs without embedding an upstream BANK OF AI API key.",
       "endpoint_count": 3,
       "featured_tags": [
         "bankofai",
@@ -83,10 +61,10 @@
       "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "BANK OF AI 提供的大模型 API，包括 OpenAI-compatible 聊天补全和 Claude-compatible Messages。",
+          "description": "BANK OF AI 大模型 API 通过 x402 提供付费模型推理能力，包含模型发现、OpenAI-compatible 聊天补全和 Claude-compatible Messages。调用方不需要暴露上游 BANK OF AI API key，可以通过 CLI、Agent 或应用按次支付调用。",
           "subtitle": "兼容 OpenAI 的大模型推理接口",
           "title": "BANK OF AI 大模型 API",
-          "useCase": "适合模型列表查询、OpenAI-compatible 聊天补全和 Claude-compatible Messages。"
+          "useCase": "适合需要按次付费调用大模型的应用、Agent 和命令行流程。先用 /v1/models 查询可用模型，再用 /v1/chat/completions 发起 OpenAI 风格请求，或用 /v1/messages 发起 Claude 风格消息请求。"
         }
       },
       "is_featured": true,
@@ -95,126 +73,13 @@
       "main_title": "BANK OF AI LLM API",
       "max_price_usd": 0.01,
       "min_price_usd": 0.001,
-      "service_url": "https://gateway.bankofai.io/providers/bankofai-llm",
-      "sha": "e6e59341c985c085e6a577f4d66131078803ac3a5e16f5257cdeb889f3aba08c",
-      "sub_title": "兼容 OpenAI 的大模型推理接口",
+      "service_url": "https://chat-stg.bankofai.io/chat",
+      "sha": "4dc0009d0b3df2320047520231aa388ad02bcc2d4def2334c71ce3d04410c29e",
+      "sub_title": "OpenAI-compatible LLM inference",
       "subtitle": "OpenAI-compatible LLM inference",
       "title": "BANK OF AI LLM API",
       "title_zh": "BANK OF AI 大模型 API",
-      "use_case": "Use for model listing, OpenAI-compatible chat completions, and Claude-compatible messages."
-    },
-    {
-      "category": "data",
-      "category_meta": {
-        "id": "data",
-        "label": "Data",
-        "label_zh": "数据"
-      },
-      "chain_kinds": [
-        "bnb",
-        "tron"
-      ],
-      "chains": [
-        "tron:mainnet",
-        "eip155:56"
-      ],
-      "chains_meta": [
-        {
-          "id": "tron:mainnet",
-          "kind": "tron",
-          "label": "TRON Mainnet",
-          "label_zh": "TRON 主网"
-        },
-        {
-          "id": "eip155:56",
-          "kind": "bnb",
-          "label": "BNB Chain",
-          "label_zh": "BNB Chain"
-        }
-      ],
-      "description": "Current weather data for city-level applications.",
-      "endpoint_count": 1,
-      "featured_tags": [
-        "weather",
-        "data"
-      ],
-      "fqn": "acme-weather",
-      "has_free_tier": false,
-      "has_metering": true,
-      "i18n": {
-        "zh-CN": {
-          "description": "为城市级应用提供实时天气数据。",
-          "subtitle": "城市级实时天气查询",
-          "title": "Acme 天气 API",
-          "useCase": "适合按城市查询当前天气。"
-        }
-      },
-      "is_featured": true,
-      "is_first_party": false,
-      "logo": "https://catalog.bankofai.io/assets/providers/acme-weather/logo.png",
-      "main_title": "Acme Weather API",
-      "max_price_usd": 0.002,
-      "min_price_usd": 0.002,
-      "service_url": "https://gateway.bankofai.io/providers/acme-weather",
-      "sha": "6d9d3be5dea4e75ad42b17bd9bf19274716326759d960d8deaa021944dc7eae2",
-      "sub_title": "城市级实时天气查询",
-      "subtitle": "City-level weather lookup",
-      "title": "Acme Weather API",
-      "title_zh": "Acme 天气 API",
-      "use_case": "Use for current weather lookup by city."
-    },
-    {
-      "category": "data",
-      "category_meta": {
-        "id": "data",
-        "label": "Data",
-        "label_zh": "数据"
-      },
-      "chain_kinds": [
-        "bnb"
-      ],
-      "chains": [
-        "eip155:97"
-      ],
-      "chains_meta": [
-        {
-          "id": "eip155:97",
-          "kind": "bnb",
-          "label": "BNB Smart Chain Testnet",
-          "label_zh": "BNB 测试网"
-        }
-      ],
-      "description": "Current weather data from the public Open-Meteo API.",
-      "endpoint_count": 1,
-      "featured_tags": [
-        "weather",
-        "open-data",
-        "no-api-key"
-      ],
-      "fqn": "open-meteo-weather",
-      "has_free_tier": false,
-      "has_metering": true,
-      "i18n": {
-        "zh-CN": {
-          "description": "来自公开 Open-Meteo API 的实时天气数据。",
-          "subtitle": "按经纬度查询实时天气",
-          "title": "Open-Meteo 天气 API",
-          "useCase": "适合在已知经纬度时查询实时天气。"
-        }
-      },
-      "is_featured": true,
-      "is_first_party": false,
-      "logo": "https://open-meteo.com/favicon.ico",
-      "main_title": "Open-Meteo Weather API",
-      "max_price_usd": 0.001,
-      "min_price_usd": 0.001,
-      "service_url": "https://gateway.bankofai.io/providers/open-meteo-weather",
-      "sha": "ccff4c6326c66e3fa1884bed302d40d4a8bc9a39feb5955c37aea29d87025277",
-      "sub_title": "按经纬度查询实时天气",
-      "subtitle": "Coordinate-based current weather",
-      "title": "Open-Meteo Weather API",
-      "title_zh": "Open-Meteo 天气 API",
-      "use_case": "Use for current weather lookup when latitude and longitude are already known."
+      "use_case": "Use this provider when an app, agent, or CLI workflow needs on-demand LLM inference with x402 payment. Start with /v1/models to choose a model, then call /v1/chat/completions for OpenAI-style requests or /v1/messages for Claude-style message payloads."
     }
   ],
   "version": 1

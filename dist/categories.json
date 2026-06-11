@@ -4,11 +4,5 @@
     "id": "ai_ml",
     "label": "AI/ML",
     "label_zh": "AI / 机器学习"
-  },
-  {
-    "count": 2,
-    "id": "data",
-    "label": "Data",
-    "label_zh": "数据"
   }
 ]
