@@ -1,23 +1,37 @@
 {
   "base_url": "https://tm-x402-catelog.bankofai.io/api",
-  "chain_count": 2,
+  "chain_count": 4,
   "first_party_count": 1,
   "frontend": {
     "categories": [
       {
         "count": 1,
-        "id": "ai_ml",
-        "label": "AI/ML",
-        "label_zh": "AI / 机器学习"
+        "id": "finance",
+        "label": "Finance",
+        "label_zh": "金融"
       }
     ],
     "chains": [
+      {
+        "count": 1,
+        "id": "eip155:56",
+        "kind": "bnb",
+        "label": "BNB Chain",
+        "label_zh": "BNB Chain"
+      },
       {
         "count": 1,
         "id": "eip155:97",
         "kind": "bnb",
         "label": "BNB Smart Chain Testnet",
         "label_zh": "BNB 测试网"
+      },
+      {
+        "count": 1,
+        "id": "tron:mainnet",
+        "kind": "tron",
+        "label": "TRON Mainnet",
+        "label_zh": "TRON 主网"
       },
       {
         "count": 1,
@@ -28,28 +42,42 @@
       }
     ],
     "featured_fqns": [
-      "bankofai-llm"
+      "sunpump-token-launch"
     ]
   },
-  "generated_at": "2026-06-11T09:02:30Z",
+  "generated_at": "2026-06-17T03:08:27Z",
   "provider_count": 1,
   "providers": [
     {
-      "category": "ai_ml",
+      "category": "finance",
       "category_meta": {
-        "id": "ai_ml",
-        "label": "AI/ML",
-        "label_zh": "AI / 机器学习"
+        "id": "finance",
+        "label": "Finance",
+        "label_zh": "金融"
       },
       "chain_kinds": [
         "bnb",
         "tron"
       ],
       "chains": [
+        "tron:nile",
+        "tron:mainnet",
         "eip155:97",
-        "tron:nile"
+        "eip155:56"
       ],
       "chains_meta": [
+        {
+          "id": "tron:nile",
+          "kind": "tron",
+          "label": "TRON Nile Testnet",
+          "label_zh": "TRON Nile 测试网"
+        },
+        {
+          "id": "tron:mainnet",
+          "kind": "tron",
+          "label": "TRON Mainnet",
+          "label_zh": "TRON 主网"
+        },
         {
           "id": "eip155:97",
           "kind": "bnb",
@@ -57,44 +85,45 @@
           "label_zh": "BNB 测试网"
         },
         {
-          "id": "tron:nile",
-          "kind": "tron",
-          "label": "TRON Nile Testnet",
-          "label_zh": "TRON Nile 测试网"
+          "id": "eip155:56",
+          "kind": "bnb",
+          "label": "BNB Chain",
+          "label_zh": "BNB Chain"
         }
       ],
-      "description": "## What it does\n\nBANK OF AI LLM API gives agents, scripts, and applications paid access to first-party large-language-model inference through x402. It supports model discovery, OpenAI-compatible chat completions, and Claude-compatible messages without exposing an upstream BANK OF AI API key to the caller.\n\n## Best for\n\n- AI agents that need on-demand reasoning, summarization, extraction, classification, or content generation.\n- Developer tools and scripts that want to call LLMs from the command line with per-request x402 payment.\n- Apps that already speak OpenAI Chat Completions or Anthropic Messages style payloads.\n- Workflows that need stablecoin payment on BSC Testnet or TRON Nile before forwarding to the upstream model API.\n\n## Quick start\n\nInstall the payment client:\n\n```bash\npip install bankofai-x402-cli==0.6.1b4\nx402-cli --version\n```\n\nList models on BSC Testnet:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \\\n  --network eip155:97 \\\n  --token USDT \\\n  --scheme exact_permit\n```\n\nList models on TRON Nile:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \\\n  --network tron:nile \\\n  --token USDT \\\n  --scheme exact_gasfree\n```\n\nFor chat generation, call `/v1/chat/completions`; for Claude-style clients, call `/v1/messages`.",
-      "endpoint_count": 3,
+      "description": "## What it does\n\nSunPump Agent Token Launch API lets agents, scripts, and applications pay with x402 and submit token launch metadata to SunPump. The gateway forwards the caller's JSON payload to the SunPump launch endpoint after payment settlement.\n\n## Best for\n\n- Agent workflows that need to create a meme or agent token from structured metadata.\n- Operator tools that want one paid API call for token creation.\n- Testnet and mainnet payment flows across TRON and BSC while using the same SunPump launch request shape.\n\n## Request shape\n\nPOST a JSON body with `name`, `symbol`, `description`, `imageBase64`, `twitterUrl`, `telegramUrl`, `websiteUrl`, and `tweetUsername`. Keep `name` within 1-20 characters and use a unique symbol. `imageBase64` may include a base64-encoded token image; if it is empty or omitted, SunPump generates an image automatically.",
+      "endpoint_count": 1,
       "featured_tags": [
-        "bankofai",
-        "llm",
-        "openai-compatible",
-        "first-party"
+        "sunpump",
+        "token-launch",
+        "agent-token",
+        "tron",
+        "bsc"
       ],
-      "fqn": "bankofai-llm",
+      "fqn": "sunpump-token-launch",
       "has_free_tier": false,
       "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "## 能做什么\n\nBANK OF AI 大模型 API 通过 x402 提供按次付费的大模型推理能力。它支持模型发现、OpenAI-compatible 聊天补全和 Claude-compatible Messages，调用方不需要暴露上游 BANK OF AI API key。\n\n## 适合场景\n\n- AI Agent 的推理、总结、信息抽取、分类和内容生成。\n- 需要从命令行或脚本里按次付费调用 LLM 的开发者工具。\n- 已经兼容 OpenAI Chat Completions 或 Anthropic Messages 请求格式的应用。\n- 需要先通过 BSC Testnet 或 TRON Nile stablecoin 支付，再转发到上游模型 API 的测试流程。\n\n## Quick start\n\n安装支付客户端：\n\n```bash\npip install bankofai-x402-cli==0.6.1b4\nx402-cli --version\n```\n\n在 BSC Testnet 查询模型：\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-bsc/v1/models' \\\n  --network eip155:97 \\\n  --token USDT \\\n  --scheme exact_permit\n```\n\n在 TRON Nile 查询模型：\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/bankofai-llm-tron-nile/v1/models' \\\n  --network tron:nile \\\n  --token USDT \\\n  --scheme exact_gasfree\n```\n\n生成对话内容使用 `/v1/chat/completions`；Claude 风格客户端使用 `/v1/messages`。",
-          "subtitle": "兼容 OpenAI 的大模型推理接口",
-          "title": "BANK OF AI 大模型 API",
-          "useCase": "适合需要按次付费调用大模型的应用、Agent 和命令行流程。先用 /v1/models 查询可用模型，再用 /v1/chat/completions 发起 OpenAI 风格请求，或用 /v1/messages 发起 Claude 风格消息请求。"
+          "description": "## 能做什么\n\nSunPump Agent 发币 API 允许 Agent、脚本和应用先完成 x402 支付，再把发币元数据提交给 SunPump。Gateway 在支付结算后把调用方的 JSON 请求体转发到 SunPump 发币接口。\n\n## 适合场景\n\n- 需要基于结构化元数据创建 meme token 或 agent token 的 Agent 工作流。\n- 希望用一次付费 API 调用完成发币的运营工具。\n- 在 TRON 和 BSC 的测试网、主网上使用同一套 SunPump 发币请求格式验证支付流程。\n\n## 请求格式\n\nPOST JSON 请求体包含 `name`、`symbol`、`description`、`imageBase64`、`twitterUrl`、`telegramUrl`、`websiteUrl` 和 `tweetUsername`。`name` 需要保持在 1-20 个字符内，并使用唯一 symbol。`imageBase64` 可以传入 base64 编码的 token 图片；如果为空或不传，SunPump 会自动生成图片。",
+          "subtitle": "通过 x402 付费调用 SunPump 发币接口",
+          "title": "SunPump Agent 发币 API",
+          "useCase": "适合应用、Agent 或 CLI 流程在 x402 支付成功后调用 SunPump 发币接口。根据支付链选择 TRON Nile、TRON 主网、BSC 测试网或 BSC 主网路由。"
         }
       },
       "is_featured": true,
       "is_first_party": true,
-      "logo": "https://bankofai.io/favicon.ico",
-      "main_title": "BANK OF AI LLM API",
-      "max_price_usd": 0.01,
+      "logo": "https://sunpump.meme/favicon.ico",
+      "main_title": "SunPump Agent Token Launch API",
+      "max_price_usd": 0.001,
       "min_price_usd": 0.001,
-      "service_url": "https://chat-stg.bankofai.io/chat",
-      "sha": "a7e80abd157430a5dae400a71779d5fc41af86d8388ae655d61a147411a9a703",
-      "sub_title": "OpenAI-compatible LLM inference",
-      "subtitle": "OpenAI-compatible LLM inference",
-      "title": "BANK OF AI LLM API",
-      "title_zh": "BANK OF AI 大模型 API",
-      "use_case": "Use this provider when an app, agent, or CLI workflow needs on-demand LLM inference with x402 payment. Start with /v1/models to choose a model, then call /v1/chat/completions for OpenAI-style requests or /v1/messages for Claude-style message payloads."
+      "service_url": "https://sunpump.meme",
+      "sha": "ff3344cef6f78375f930d998e3fb550edc6ecfa7ef19400da9fe053c365c9b7b",
+      "sub_title": "Paid agent token creation through SunPump",
+      "subtitle": "Paid agent token creation through SunPump",
+      "title": "SunPump Agent Token Launch API",
+      "title_zh": "SunPump Agent 发币 API",
+      "use_case": "Use this provider when an app, agent, or CLI workflow needs to launch a SunPump token after a successful x402 payment. Choose the route matching the intended payment chain: TRON Nile, TRON Mainnet, BSC Testnet, or BSC Mainnet."
     }
   ],
   "version": 1
