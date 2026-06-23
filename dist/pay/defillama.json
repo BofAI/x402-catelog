@@ -21,7 +21,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "One DefiLlama gateway over x402 covering protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY. Key-free decision data for agents doing DeFi research, capital allocation, pricing and risk screening. Data by DefiLlama.",
+  "description": "## What it does\n\nDefiLlama gateway over x402: read protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY — all key-free, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents doing DeFi research, allocation and risk screening that need TVL / fees / stablecoin data.\n- Pricing and valuation workflows that need multi-chain current and historical token prices.\n- Yield scouting across pools by APY, TVL and risk.\n\n## Endpoints\n\n- `GET /protocols` — All protocols with current TVL, category and chain breakdown\n- `GET /protocol/{slug}` — Single protocol: historical TVL, fees, tokens, metadata\n- `GET /tvl/{protocol}` — Current total TVL of a protocol (lightweight)\n- `GET /prices/current/{coins}` — Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)\n- `GET /prices/historical/{timestamp}/{coins}` — Historical USD price at a unix timestamp for one or many coins\n- `GET /chart/{coins}` — Price chart (time series) for one or many coins\n- `GET /percentage/{coins}` — Percentage price change over a period for one or many coins\n- `GET /pools` — All yield pools with current APY, TVL, chain, project and risk flags\n- `GET /chart/{pool}` — Historical APY / TVL time series for a single pool id\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Use the x402 CLI to pay the gateway URL. TRON Mainnet (`exact_gasfree`) route:\n\n`https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols`\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
   "endpoints": [
     {
       "description": "All protocols with current TVL, category and chain breakdown",
@@ -242,7 +242,7 @@
   },
   "main_title": "DefiLlama",
   "service_url": "https://defillama.com",
-  "sha": "4c5699a3d263059b438adc2788479ec0df1cca533b6997107cf464ad971bb07e",
+  "sha": "56eb2439763962c14b4e86b7ddf1d641ac1bfae7be463fcbf39fd0d1d5fdfe79",
   "sub_title": "Aggregated DeFi data - protocol TVL, fees & stablecoins, multi-chain token prices, and pool yields/APY.",
   "subtitle": "Aggregated DeFi data - protocol TVL, fees & stablecoins, multi-chain token prices, and pool yields/APY.",
   "title": "DefiLlama",

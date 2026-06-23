@@ -27,7 +27,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "DIA oracle price feeds over x402: transparent, multi-source token quotations aggregated across 80+ CEX/DEX markets for 3,000+ assets. For agents that need verifiable reference prices for valuation, settlement or risk checks. Data by DIA.",
+  "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Use the x402 CLI to pay the gateway URL. TRON Mainnet (`exact_gasfree`) route:\n\n`https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}`\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
   "endpoint_count": 2,
   "endpoints": [
     {
@@ -125,7 +125,7 @@
   "max_price_usd": 1e-06,
   "min_price_usd": 1e-06,
   "service_url": "https://www.diadata.org",
-  "sha": "93f9ca13c1986385dc7f14f4254563cfeda6a624d598f3ffcf876cb55388453c",
+  "sha": "f1ea19b8554cbea18faf7384b9a34d40ecb9beb3fdcd168928a30df2af670202",
   "status": {
     "catalog": "listed",
     "gateway": "configured",
