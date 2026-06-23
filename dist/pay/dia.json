@@ -21,7 +21,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Use the x402 CLI to pay the gateway URL. TRON Mainnet (`exact_gasfree`) route:\n\n`https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}`\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
+  "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Pay the gateway URL with the x402 CLI before the upstream API response is returned. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n",
   "endpoints": [
     {
       "description": "Aggregated price quotation by asset symbol",
@@ -73,17 +73,17 @@
   "fqn": "dia",
   "i18n": {
     "zh-CN": {
-      "description": "通过 x402 网关获取 DIA 预言机价格:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价。适合 Agent 在估值、结算或风控中获取可验证参考价。数据来自 DIA。",
-      "subtitle": "去中心化、抗操纵的预言机价格,聚合 80+ 市场、覆盖 3000+ 资产。",
+      "description": "## 能做什么\n\nDIA 预言机价格的 x402 网关:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 需要可验证参考价做估值或结算的 Agent。\n- 用抗操纵价格做风控/合规校验。\n- 与盘口现价交叉验证。\n\n## 接口\n\n- `GET /v1/quotation/{symbol}` — 通过 gateway 调用 `/v1/quotation/{symbol}`，用于获取该接口对应的公开数据。\n- `GET /v1/assetQuotation/{blockchain}/{address}` — 通过 gateway 调用 `/v1/assetQuotation/{blockchain}/{address}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些路由是 x402 保护的最低价付费接口。需要先用 x402 CLI 支付网关 URL,支付完成后才会返回上游 API 结果。TRON 主网(`exact_gasfree`)示例:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供: `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`。\n",
+      "subtitle": "可验证的参考价,用于估值、结算与风控。",
       "title": "DIA 预言机",
       "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
     }
   },
-  "main_title": "DIA",
+  "main_title": "Decentralized multi-source oracle prices",
   "service_url": "https://www.diadata.org",
-  "sha": "f1ea19b8554cbea18faf7384b9a34d40ecb9beb3fdcd168928a30df2af670202",
-  "sub_title": "Decentralized, manipulation-resistant oracle prices aggregated from 80+ markets for 3,000+ assets.",
-  "subtitle": "Decentralized, manipulation-resistant oracle prices aggregated from 80+ markets for 3,000+ assets.",
+  "sha": "ee91d2f563a0b8b260d9480b36f3829c322f79d8d889103c042d39ce70b0093f",
+  "sub_title": "Verifiable reference prices for valuation, settlement and risk.",
+  "subtitle": "Verifiable reference prices for valuation, settlement and risk.",
   "title": "DIA",
   "title_zh": "DIA 预言机",
   "use_case": "Use to get a real-time, multi-market aggregated USD price for a token by symbol or by blockchain+contract address.",

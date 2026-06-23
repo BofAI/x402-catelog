@@ -1,6 +1,6 @@
-# DexScreener DEX Pairs & New-Listing API (TRON x402, Free)
+# DexScreener DEX Data API (TRON/BSC x402, Minimum Price)
 
-Free x402 passthrough for DexScreener token/pair data, search and latest token profiles. New-launch / meme radar data for trading agents. Data by DexScreener.
+Minimum-price x402 passthrough for DexScreener DEX pair search, token prices, liquidity and new-listing data. Data by DexScreener.
 
 ## Service
 
@@ -9,8 +9,8 @@ Free x402 passthrough for DexScreener token/pair data, search and latest token p
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_gasfree`
-- Tags: dexscreener, dex, new-pairs, meme, liquidity, price, free
-- Listed price: free (`0 USD` min and max price)
+- Tags: dexscreener, dex, new-pairs, meme, liquidity, price, minimum-price
+- Listed price: minimum price (`0.000001 USD` min and max price)
 
 ## When To Use
 
@@ -40,13 +40,18 @@ Latest token profiles (new-launch / discovery radar)
 
 ## Code Usage
 
-Call the catalog route with any HTTP client. Example:
+Pay the catalog route with the x402 CLI. Example:
 
 ```bash
-curl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/search?q=SUN'
+x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/search?q=SUN' \
+  --method GET \
+  --network tron:mainnet \
+  --token USDT \
+  --scheme exact_gasfree \
+  --max-amount 0.001
 ```
 
-Equivalent route form:
+Equivalent route form after payment:
 
 ```text
 GET https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/search?q=SUN
