@@ -21,7 +21,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "Free x402 passthrough for DefiLlama protocol TVL, fees/revenue and stablecoin data. Key-free DeFi decision data layer for agents. Data by DefiLlama.",
+  "description": "One DefiLlama gateway over x402 covering protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY. Key-free decision data for agents doing DeFi research, capital allocation, pricing and risk screening. Data by DefiLlama.",
   "endpoints": [
     {
       "description": "All protocols with current TVL, category and chain breakdown",
@@ -234,17 +234,17 @@
   "fqn": "defillama",
   "i18n": {
     "zh-CN": {
-      "description": "DefiLlama 数据 API（TRON） 通过 x402 gateway 提供公开数据访问，适合 Agent 在金融分析、交易研究、风险筛查和数据聚合流程中调用。",
-      "subtitle": "DeFi TVL、价格与收益率聚合数据",
+      "description": "通过 x402 网关聚合 DefiLlama 数据:协议 TVL、费用/收入与稳定币指标、多链现价与历史价格及图表、DeFi 资金池收益率/APY。免 key,适合 Agent 做 DeFi 研究、资金配置、定价与风险筛查。数据来自 DefiLlama。",
+      "subtitle": "聚合 DeFi 数据:协议 TVL、费用与稳定币、多链代币价格、资金池收益率/APY。",
       "title": "DefiLlama 数据",
       "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
     }
   },
   "main_title": "DefiLlama",
   "service_url": "https://defillama.com",
-  "sha": "be2b4a3fdd88bbe3eebaaabafaf4a7bcf3552ab8d17d34f7d66f1881ab740de7",
-  "sub_title": "DeFi TVL, prices & yields across chains",
-  "subtitle": "DeFi TVL, prices & yields across chains",
+  "sha": "bc254225409fb78f6d0ae7553a8a36b72d0c3c5d34eb55b63e3be7cd39d5ab70",
+  "sub_title": "Aggregated DeFi data - protocol TVL, fees & stablecoins, multi-chain token prices, and pool yields/APY.",
+  "subtitle": "Aggregated DeFi data - protocol TVL, fees & stablecoins, multi-chain token prices, and pool yields/APY.",
   "title": "DefiLlama",
   "title_zh": "DefiLlama 数据",
   "use_case": "Use to read protocol TVL, fees/revenue and stablecoin metrics for DeFi research, allocation or risk screening.",

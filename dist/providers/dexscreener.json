@@ -27,7 +27,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "Free x402 passthrough for DexScreener token/pair data, search and latest token profiles. New-launch / meme radar data for trading agents. Data by DexScreener.",
+  "description": "DexScreener market data over x402: search trading pairs, read live price, liquidity and volume, and surface newly launched and trending tokens across major chains. Built for agents tracking new pools, momentum and meme launches. Data by DexScreener.",
   "endpoint_count": 3,
   "endpoints": [
     {
@@ -147,8 +147,8 @@
   "has_metering": false,
   "i18n": {
     "zh-CN": {
-      "description": "DexScreener DEX Pairs & New-Listing API (TRON x402, Free)（TRON） 通过 x402 gateway 提供公开数据访问，适合 Agent 在金融分析、交易研究、风险筛查和数据聚合流程中调用。",
-      "subtitle": "DEX 交易对、行情与新盘数据",
+      "description": "通过 x402 网关获取 DexScreener 行情:搜索交易对、读取实时价格/流动性/成交量,并发现新上线与热门代币。适合 Agent 追踪新盘、动量与 meme 上新。数据来自 DexScreener。",
+      "subtitle": "跨主流链的实时 DEX 交易对、价格、流动性与新上线代币。",
       "title": "DexScreener",
       "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
     }
@@ -160,15 +160,15 @@
   "max_price_usd": 0.0,
   "min_price_usd": 0.0,
   "service_url": "https://dexscreener.com",
-  "sha": "43d93b513821977311fd4350b34d65d6b3ca66306ba839ced5f46b3fbac3e991",
+  "sha": "f2ef109202c033f861349b510574549b898b3906cc638606d2e62105d67e486c",
   "status": {
     "catalog": "listed",
     "gateway": "configured",
     "payment": "free-route",
     "upstream": "public"
   },
-  "sub_title": "DEX pairs, prices & new listings",
-  "subtitle": "DEX pairs, prices & new listings",
+  "sub_title": "Real-time DEX pairs, prices, liquidity and newly launched tokens across major chains.",
+  "subtitle": "Real-time DEX pairs, prices, liquidity and newly launched tokens across major chains.",
   "title": "DexScreener",
   "title_zh": "DexScreener",
   "use_case": "Use to look up a token's DEX pairs/price/liquidity, search tokens, or pull the latest token profiles for new-launch / meme screening."
