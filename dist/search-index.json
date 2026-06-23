@@ -299,29 +299,15 @@
         "tron"
       ],
       "chains": [
-        "tron:nile",
         "tron:mainnet",
-        "eip155:97",
         "eip155:56"
       ],
       "chains_meta": [
-        {
-          "id": "tron:nile",
-          "kind": "tron",
-          "label": "TRON Nile Testnet",
-          "label_zh": "TRON Nile 测试网"
-        },
         {
           "id": "tron:mainnet",
           "kind": "tron",
           "label": "TRON Mainnet",
           "label_zh": "TRON 主网"
-        },
-        {
-          "id": "eip155:97",
-          "kind": "bnb",
-          "label": "BNB Smart Chain Testnet",
-          "label_zh": "BNB 测试网"
         },
         {
           "id": "eip155:56",
@@ -353,6 +339,6 @@
       "use_case": "Use this provider when an app, agent, or CLI workflow needs to launch a SunPump token after a successful x402 payment. Choose the route matching the intended payment chain: TRON Nile, TRON Mainnet, BSC Testnet, or BSC Mainnet."
     }
   ],
-  "generated_at": "2026-06-23T08:47:36Z",
+  "generated_at": "2026-06-23T09:06:55Z",
   "version": 1
 }

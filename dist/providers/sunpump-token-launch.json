@@ -10,29 +10,15 @@
     "tron"
   ],
   "chains": [
-    "tron:nile",
     "tron:mainnet",
-    "eip155:97",
     "eip155:56"
   ],
   "chains_meta": [
-    {
-      "id": "tron:nile",
-      "kind": "tron",
-      "label": "TRON Nile Testnet",
-      "label_zh": "TRON Nile 测试网"
-    },
     {
       "id": "tron:mainnet",
       "kind": "tron",
       "label": "TRON Mainnet",
       "label_zh": "TRON 主网"
-    },
-    {
-      "id": "eip155:97",
-      "kind": "bnb",
-      "label": "BNB Smart Chain Testnet",
-      "label_zh": "BNB 测试网"
     },
     {
       "id": "eip155:56",
@@ -65,22 +51,10 @@
       "use_case": "Use this endpoint when an agent or backend has already validated launch metadata and is ready to create the token.",
       "x402_routes": [
         {
-          "network": "tron:nile",
-          "provider": "sunpump-token-launch-tron-nile",
-          "scheme": "exact_gasfree",
-          "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron-nile/pump-api/ai/agentTokenLaunch"
-        },
-        {
           "network": "tron:mainnet",
           "provider": "sunpump-token-launch-tron",
           "scheme": "exact_gasfree",
           "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron/pump-api/ai/agentTokenLaunch"
-        },
-        {
-          "network": "eip155:97",
-          "provider": "sunpump-token-launch-bsc-testnet",
-          "scheme": "exact_permit",
-          "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc-testnet/pump-api/ai/agentTokenLaunch"
         },
         {
           "network": "eip155:56",
@@ -116,7 +90,7 @@
   "max_price_usd": 0.001,
   "min_price_usd": 0.001,
   "service_url": "https://sunpump.meme",
-  "sha": "194b51ff9493dc0797a746c6106ec180b887c1c6743b254ee8aff944dc59b9c5",
+  "sha": "3b741debf14151ee5ef46c35d4356317a146c673ca133489981a524b1317b708",
   "status": {
     "catalog": "listed",
     "gateway": "configured",

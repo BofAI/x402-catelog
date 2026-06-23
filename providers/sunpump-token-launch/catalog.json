@@ -16,9 +16,7 @@
   "logo": "https://sunpump.meme/favicon.ico",
   "category": "finance",
   "chains": [
-    "tron:nile",
     "tron:mainnet",
-    "eip155:97",
     "eip155:56"
   ],
   "isFirstParty": true,
@@ -38,22 +36,10 @@
       "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron/pump-api/ai/agentTokenLaunch",
       "x402Routes": [
         {
-          "network": "tron:nile",
-          "provider": "sunpump-token-launch-tron-nile",
-          "scheme": "exact_gasfree",
-          "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron-nile/pump-api/ai/agentTokenLaunch"
-        },
-        {
           "network": "tron:mainnet",
           "provider": "sunpump-token-launch-tron",
           "scheme": "exact_gasfree",
           "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron/pump-api/ai/agentTokenLaunch"
-        },
-        {
-          "network": "eip155:97",
-          "provider": "sunpump-token-launch-bsc-testnet",
-          "scheme": "exact_permit",
-          "url": "https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc-testnet/pump-api/ai/agentTokenLaunch"
         },
         {
           "network": "eip155:56",

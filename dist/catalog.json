@@ -1,6 +1,6 @@
 {
   "base_url": "https://tm-x402-catelog.bankofai.io/api",
-  "chain_count": 4,
+  "chain_count": 2,
   "first_party_count": 1,
   "frontend": {
     "categories": [
@@ -20,32 +20,18 @@
         "label_zh": "BNB Chain"
       },
       {
-        "count": 1,
-        "id": "eip155:97",
-        "kind": "bnb",
-        "label": "BNB Smart Chain Testnet",
-        "label_zh": "BNB 测试网"
-      },
-      {
         "count": 5,
         "id": "tron:mainnet",
         "kind": "tron",
         "label": "TRON Mainnet",
         "label_zh": "TRON 主网"
-      },
-      {
-        "count": 1,
-        "id": "tron:nile",
-        "kind": "tron",
-        "label": "TRON Nile Testnet",
-        "label_zh": "TRON Nile 测试网"
       }
     ],
     "featured_fqns": [
       "sunpump-token-launch"
     ]
   },
-  "generated_at": "2026-06-23T08:47:36Z",
+  "generated_at": "2026-06-23T09:06:55Z",
   "provider_count": 5,
   "providers": [
     {
@@ -60,29 +46,15 @@
         "tron"
       ],
       "chains": [
-        "tron:nile",
         "tron:mainnet",
-        "eip155:97",
         "eip155:56"
       ],
       "chains_meta": [
-        {
-          "id": "tron:nile",
-          "kind": "tron",
-          "label": "TRON Nile Testnet",
-          "label_zh": "TRON Nile 测试网"
-        },
         {
           "id": "tron:mainnet",
           "kind": "tron",
           "label": "TRON Mainnet",
           "label_zh": "TRON 主网"
-        },
-        {
-          "id": "eip155:97",
-          "kind": "bnb",
-          "label": "BNB Smart Chain Testnet",
-          "label_zh": "BNB 测试网"
         },
         {
           "id": "eip155:56",
@@ -118,7 +90,7 @@
       "max_price_usd": 0.001,
       "min_price_usd": 0.001,
       "service_url": "https://sunpump.meme",
-      "sha": "194b51ff9493dc0797a746c6106ec180b887c1c6743b254ee8aff944dc59b9c5",
+      "sha": "3b741debf14151ee5ef46c35d4356317a146c673ca133489981a524b1317b708",
       "sub_title": "Paid agent token creation through SunPump",
       "subtitle": "Paid agent token creation through SunPump",
       "title": "SunPump Agent Token Launch API",
