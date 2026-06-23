@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "fqn": "defillama",
+  "title": "DefiLlama",
+  "subtitle": "DeFi TVL, prices & yields across chains",
+  "description": "Free x402 passthrough for DefiLlama protocol TVL, fees/revenue and stablecoin data. Key-free DeFi decision data layer for agents. Data by DefiLlama.",
+  "useCase": "Use to read protocol TVL, fees/revenue and stablecoin metrics for DeFi research, allocation or risk screening.",
+  "i18n": {
+    "zh-CN": {
+      "title": "DefiLlama 数据",
+      "subtitle": "DeFi TVL、价格与收益率聚合数据",
+      "description": "DefiLlama 数据 API（TRON） 通过 x402 gateway 提供公开数据访问，适合 Agent 在金融分析、交易研究、风险筛查和数据聚合流程中调用。",
+      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
+    }
+  },
+  "logo": "https://defillama.com/favicon.ico",
+  "category": "finance",
+  "chains": [
+    "tron:mainnet",
+    "eip155:56"
+  ],
+  "isFirstParty": false,
+  "isFeatured": false,
+  "featuredTags": [
+    "defillama",
+    "defi",
+    "tvl",
+    "fees",
+    "stablecoins",
+    "free"
+  ],
+  "serviceUrl": "https://defillama.com",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/protocols",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols",
+      "title": "All protocols with current TVL, category and chain breakdown",
+      "subtitle": "/protocols",
+      "description": "All protocols with current TVL, category and chain breakdown",
+      "useCase": "Use this endpoint when an agent needs all protocols with current TVL, category and chain breakdown through the defillama-tvl-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "All protocols with current TVL, category and chain breakdown",
+          "subtitle": "/protocols",
+          "description": "通过 gateway 调用 `/protocols`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-tvl-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols"
+        },
+        {
+          "provider": "defillama-tvl-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/protocols"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/protocol/{slug}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocol/{slug}",
+      "title": "Single protocol: historical TVL, fees, tokens, metadata",
+      "subtitle": "/protocol/{slug}",
+      "description": "Single protocol: historical TVL, fees, tokens, metadata",
+      "useCase": "Use this endpoint when an agent needs single protocol: historical TVL, fees, tokens, metadata through the defillama-tvl-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Single protocol: historical TVL, fees, tokens, metadata",
+          "subtitle": "/protocol/{slug}",
+          "description": "通过 gateway 调用 `/protocol/{slug}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-tvl-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocol/{slug}"
+        },
+        {
+          "provider": "defillama-tvl-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/protocol/{slug}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tvl/{protocol}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/tvl/{protocol}",
+      "title": "Current total TVL of a protocol (lightweight)",
+      "subtitle": "/tvl/{protocol}",
+      "description": "Current total TVL of a protocol (lightweight)",
+      "useCase": "Use this endpoint when an agent needs current total TVL of a protocol (lightweight) through the defillama-tvl-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Current total TVL of a protocol (lightweight)",
+          "subtitle": "/tvl/{protocol}",
+          "description": "通过 gateway 调用 `/tvl/{protocol}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-tvl-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/tvl/{protocol}"
+        },
+        {
+          "provider": "defillama-tvl-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/tvl/{protocol}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/prices/current/{coins}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/prices/current/{coins}",
+      "title": "Current USD price for one or many coins ({chain}:{address} or coingecko:{id}",
+      "subtitle": "/prices/current/{coins}",
+      "description": "Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)",
+      "useCase": "Use this endpoint when an agent needs current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated) through the defillama-coins-price-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Current USD price for one or many coins ({chain}:{address} or coingecko:{id}",
+          "subtitle": "/prices/current/{coins}",
+          "description": "通过 gateway 调用 `/prices/current/{coins}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-coins-price-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/prices/current/{coins}"
+        },
+        {
+          "provider": "defillama-coins-price-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-bsc/prices/current/{coins}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/prices/historical/{timestamp}/{coins}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/prices/historical/{timestamp}/{coins}",
+      "title": "Historical USD price at a unix timestamp for one or many coins",
+      "subtitle": "/prices/historical/{timestamp}/{coins}",
+      "description": "Historical USD price at a unix timestamp for one or many coins",
+      "useCase": "Use this endpoint when an agent needs historical USD price at a unix timestamp for one or many coins through the defillama-coins-price-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Historical USD price at a unix timestamp for one or many coins",
+          "subtitle": "/prices/historical/{timestamp}/{coins}",
+          "description": "通过 gateway 调用 `/prices/historical/{timestamp}/{coins}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-coins-price-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/prices/historical/{timestamp}/{coins}"
+        },
+        {
+          "provider": "defillama-coins-price-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-bsc/prices/historical/{timestamp}/{coins}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/chart/{coins}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/chart/{coins}",
+      "title": "Price chart (time series) for one or many coins",
+      "subtitle": "/chart/{coins}",
+      "description": "Price chart (time series) for one or many coins",
+      "useCase": "Use this endpoint when an agent needs price chart (time series) for one or many coins through the defillama-coins-price-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Price chart (time series) for one or many coins",
+          "subtitle": "/chart/{coins}",
+          "description": "通过 gateway 调用 `/chart/{coins}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-coins-price-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/chart/{coins}"
+        },
+        {
+          "provider": "defillama-coins-price-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-bsc/chart/{coins}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/percentage/{coins}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/percentage/{coins}",
+      "title": "Percentage price change over a period for one or many coins",
+      "subtitle": "/percentage/{coins}",
+      "description": "Percentage price change over a period for one or many coins",
+      "useCase": "Use this endpoint when an agent needs percentage price change over a period for one or many coins through the defillama-coins-price-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Percentage price change over a period for one or many coins",
+          "subtitle": "/percentage/{coins}",
+          "description": "通过 gateway 调用 `/percentage/{coins}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-coins-price-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-tron/percentage/{coins}"
+        },
+        {
+          "provider": "defillama-coins-price-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-coins-price-bsc/percentage/{coins}"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/pools",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-tron/pools",
+      "title": "All yield pools with current APY, TVL, chain, project and risk flags",
+      "subtitle": "/pools",
+      "description": "All yield pools with current APY, TVL, chain, project and risk flags",
+      "useCase": "Use this endpoint when an agent needs all yield pools with current APY, TVL, chain, project and risk flags through the defillama-yields-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "All yield pools with current APY, TVL, chain, project and risk flags",
+          "subtitle": "/pools",
+          "description": "通过 gateway 调用 `/pools`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-yields-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-tron/pools"
+        },
+        {
+          "provider": "defillama-yields-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-bsc/pools"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/chart/{pool}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-tron/chart/{pool}",
+      "title": "Historical APY / TVL time series for a single pool id",
+      "subtitle": "/chart/{pool}",
+      "description": "Historical APY / TVL time series for a single pool id",
+      "useCase": "Use this endpoint when an agent needs historical APY / TVL time series for a single pool id through the defillama-yields-tron gateway route.",
+      "i18n": {
+        "zh-CN": {
+          "title": "Historical APY / TVL time series for a single pool id",
+          "subtitle": "/chart/{pool}",
+          "description": "通过 gateway 调用 `/chart/{pool}`，用于获取该接口对应的公开数据。",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
+      "x402Routes": [
+        {
+          "provider": "defillama-yields-tron",
+          "network": "tron:mainnet",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-tron/chart/{pool}"
+        },
+        {
+          "provider": "defillama-yields-bsc",
+          "network": "eip155:56",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/defillama-yields-bsc/chart/{pool}"
+        }
+      ]
+    }
+  ],
+  "status": {
+    "catalog": "listed",
+    "gateway": "configured",
+    "payment": "free-route",
+    "upstream": "public"
+  }
+}

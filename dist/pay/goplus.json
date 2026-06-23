@@ -1,0 +1,114 @@
+{
+  "chain_kinds": [
+    "bnb",
+    "tron"
+  ],
+  "chains": [
+    "tron:mainnet",
+    "eip155:56"
+  ],
+  "chains_meta": [
+    {
+      "id": "tron:mainnet",
+      "kind": "tron",
+      "label": "TRON Mainnet",
+      "label_zh": "TRON 主网"
+    },
+    {
+      "id": "eip155:56",
+      "kind": "bnb",
+      "label": "BNB Chain",
+      "label_zh": "BNB Chain"
+    }
+  ],
+  "description": "Free x402 passthrough for GoPlus Security checks (token security / honeypot, malicious address, approval risk). Powered by GoPlus. Agent-native pre-trade risk control.",
+  "endpoints": [
+    {
+      "description": "Token security report (honeypot, taxes, owner privileges, holders) for one or more contracts",
+      "max_price_usd": 0.0,
+      "metered": false,
+      "method": "GET",
+      "min_price_usd": 0.0,
+      "path": "/api/v1/token_security/{chain_id}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "goplus-token-security-tron",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "goplus-token-security-bsc",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-bsc/api/v1/token_security/{chain_id}"
+        }
+      ]
+    },
+    {
+      "description": "Malicious-address check (sanctions, phishing, known scam)",
+      "max_price_usd": 0.0,
+      "metered": false,
+      "method": "GET",
+      "min_price_usd": 0.0,
+      "path": "/api/v1/address_security/{address}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/address_security/{address}",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "goplus-token-security-tron",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/address_security/{address}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "goplus-token-security-bsc",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-bsc/api/v1/address_security/{address}"
+        }
+      ]
+    },
+    {
+      "description": "Approval / allowance risk check for a spender contract",
+      "max_price_usd": 0.0,
+      "metered": false,
+      "method": "GET",
+      "min_price_usd": 0.0,
+      "path": "/api/v1/approval_security/{chain_id}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/approval_security/{chain_id}",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "goplus-token-security-tron",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/approval_security/{chain_id}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "goplus-token-security-bsc",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-bsc/api/v1/approval_security/{chain_id}"
+        }
+      ]
+    }
+  ],
+  "fqn": "goplus",
+  "i18n": {
+    "zh-CN": {
+      "description": "GoPlus 代币安全 API（TRON） 通过 x402 gateway 提供公开数据访问，适合 Agent 在金融分析、交易研究、风险筛查和数据聚合流程中调用。",
+      "subtitle": "代币与地址安全风控检测",
+      "title": "GoPlus 安全",
+      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
+    }
+  },
+  "main_title": "GoPlus",
+  "service_url": "https://gopluslabs.io",
+  "sha": "25d4637e131346e5af227a3238bbec7431014db35adbba7df72aace413d096a5",
+  "sub_title": "Token & address security risk checks",
+  "subtitle": "Token & address security risk checks",
+  "title": "GoPlus",
+  "title_zh": "GoPlus 安全",
+  "use_case": "Use before buying a token, approving an allowance, or sending to an address: check if a token is a honeypot/scam, whether an address is malicious, and whether an approval is risky.",
+  "version": 1
+}

@@ -1,0 +1,91 @@
+{
+  "chain_kinds": [
+    "bnb",
+    "tron"
+  ],
+  "chains": [
+    "tron:mainnet",
+    "eip155:56"
+  ],
+  "chains_meta": [
+    {
+      "id": "tron:mainnet",
+      "kind": "tron",
+      "label": "TRON Mainnet",
+      "label_zh": "TRON 主网"
+    },
+    {
+      "id": "eip155:56",
+      "kind": "bnb",
+      "label": "BNB Chain",
+      "label_zh": "BNB Chain"
+    }
+  ],
+  "description": "Free x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ markets, key-free). Manipulation-resistant price source for agents. Data by DIA.",
+  "endpoints": [
+    {
+      "description": "Aggregated price quotation by asset symbol",
+      "max_price_usd": 0.0,
+      "metered": false,
+      "method": "GET",
+      "min_price_usd": 0.0,
+      "path": "/v1/quotation/{symbol}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "dia-price-tron",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "dia-price-bsc",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/v1/quotation/{symbol}"
+        }
+      ]
+    },
+    {
+      "description": "Aggregated price quotation by blockchain + contract address",
+      "max_price_usd": 0.0,
+      "metered": false,
+      "method": "GET",
+      "min_price_usd": 0.0,
+      "path": "/v1/assetQuotation/{blockchain}/{address}",
+      "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/assetQuotation/{blockchain}/{address}",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "dia-price-tron",
+          "scheme": "exact_gasfree",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/assetQuotation/{blockchain}/{address}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "dia-price-bsc",
+          "scheme": "exact_permit",
+          "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/v1/assetQuotation/{blockchain}/{address}"
+        }
+      ]
+    }
+  ],
+  "fqn": "dia",
+  "i18n": {
+    "zh-CN": {
+      "description": "DIA 价格 API（TRON） 通过 x402 gateway 提供公开数据访问，适合 Agent 在金融分析、交易研究、风险筛查和数据聚合流程中调用。",
+      "subtitle": "多源去中心化预言机价格",
+      "title": "DIA 预言机",
+      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
+    }
+  },
+  "main_title": "DIA",
+  "service_url": "https://www.diadata.org",
+  "sha": "b3e1f801dfcc8539f265212fe851cd97e0a6bd31f9e0d102b536faf89387615f",
+  "sub_title": "Multi-source oracle token prices",
+  "subtitle": "Multi-source oracle token prices",
+  "title": "DIA",
+  "title_zh": "DIA 预言机",
+  "use_case": "Use to get a real-time, multi-market aggregated USD price for a token by symbol or by blockchain+contract address.",
+  "version": 1
+}
