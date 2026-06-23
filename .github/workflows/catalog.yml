@@ -45,18 +45,10 @@ jobs:
 
           expected = {
               "sunpump-token-launch",
-              "defillama-coins-price-bsc",
-              "defillama-coins-price-tron",
-              "defillama-tvl-bsc",
-              "defillama-tvl-tron",
-              "defillama-yields-bsc",
-              "defillama-yields-tron",
-              "dexscreener-dex-data-bsc",
-              "dexscreener-dex-data-tron",
-              "dia-price-bsc",
-              "dia-price-tron",
-              "goplus-token-security-bsc",
-              "goplus-token-security-tron",
+              "defillama",
+              "dexscreener",
+              "dia",
+              "goplus",
           }
           catalog = json.loads(Path("dist/catalog.json").read_text())
           fqns = {provider["fqn"] for provider in catalog["providers"]}
@@ -102,9 +94,9 @@ jobs:
           curl -fsS http://127.0.0.1:8088/api/catalog.json > /tmp/catalog.json
           curl -fsS http://127.0.0.1:8088/api/providers/sunpump-token-launch.json > /tmp/provider.json
           curl -fsS http://127.0.0.1:8088/api/pay/sunpump-token-launch.json > /tmp/pay.json
-          curl -fsS http://127.0.0.1:8088/api/providers/defillama-coins-price-bsc.json > /tmp/defillama-provider.json
-          curl -fsS http://127.0.0.1:8088/api/pay/defillama-coins-price-bsc.json > /tmp/defillama-pay.json
-          curl -fsS http://127.0.0.1:8088/api/pay/defillama-coins-price-bsc.md > /tmp/defillama-pay.md
+          curl -fsS http://127.0.0.1:8088/api/providers/defillama.json > /tmp/defillama-provider.json
+          curl -fsS http://127.0.0.1:8088/api/pay/defillama.json > /tmp/defillama-pay.json
+          curl -fsS http://127.0.0.1:8088/api/pay/defillama.md > /tmp/defillama-pay.md
           python3 -m json.tool /tmp/catalog.json > /dev/null
           python3 -m json.tool /tmp/provider.json > /dev/null
           python3 -m json.tool /tmp/pay.json > /dev/null
