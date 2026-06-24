@@ -21,21 +21,21 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
+  "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
   "endpoints": [
     {
       "description": "Aggregated price quotation by asset symbol",
-      "max_price_usd": 0.0,
+      "max_price_usd": 0,
       "metered": false,
       "method": "GET",
-      "min_price_usd": 0.0,
+      "min_price_usd": 0,
       "path": "/v1/quotation/{symbol}",
       "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}",
       "x402_routes": [
         {
           "network": "tron:mainnet",
           "provider": "dia-price-tron",
-          "scheme": "exact_gasfree",
+          "scheme": "exact_permit",
           "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}"
         },
         {
@@ -48,17 +48,17 @@
     },
     {
       "description": "Aggregated price quotation by blockchain + contract address",
-      "max_price_usd": 0.0,
+      "max_price_usd": 0,
       "metered": false,
       "method": "GET",
-      "min_price_usd": 0.0,
+      "min_price_usd": 0,
       "path": "/v1/assetQuotation/{blockchain}/{address}",
       "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/assetQuotation/{blockchain}/{address}",
       "x402_routes": [
         {
           "network": "tron:mainnet",
           "provider": "dia-price-tron",
-          "scheme": "exact_gasfree",
+          "scheme": "exact_permit",
           "url": "https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/assetQuotation/{blockchain}/{address}"
         },
         {
@@ -73,7 +73,7 @@
   "fqn": "dia",
   "i18n": {
     "zh-CN": {
-      "description": "## 能做什么\n\nDIA 预言机价格的 x402 网关:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 需要可验证参考价做估值或结算的 Agent。\n- 用抗操纵价格做风控/合规校验。\n- 与盘口现价交叉验证。\n\n## 接口\n\n- `GET /v1/quotation/{symbol}` — 通过 gateway 调用 `/v1/quotation/{symbol}`，用于获取该接口对应的公开数据。\n- `GET /v1/assetQuotation/{blockchain}/{address}` — 通过 gateway 调用 `/v1/assetQuotation/{blockchain}/{address}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_gasfree`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
+      "description": "## 能做什么\n\nDIA 预言机价格的 x402 网关:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 需要可验证参考价做估值或结算的 Agent。\n- 用抗操纵价格做风控/合规校验。\n- 与盘口现价交叉验证。\n\n## 接口\n\n- `GET /v1/quotation/{symbol}` — 通过 gateway 调用 `/v1/quotation/{symbol}`，用于获取该接口对应的公开数据。\n- `GET /v1/assetQuotation/{blockchain}/{address}` — 通过 gateway 调用 `/v1/assetQuotation/{blockchain}/{address}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
       "mainTitle": "去中心化多源预言机价格",
       "subtitle": "可验证的参考价,用于估值、结算与风控。",
       "title": "DIA",
@@ -83,7 +83,7 @@
   "main_title": "Decentralized multi-source oracle prices",
   "main_title_zh": "去中心化多源预言机价格",
   "service_url": "https://www.diadata.org",
-  "sha": "e275c2fa02c4cfbf314d2c5eda60af4fb4c8ac3382622947fc79871902fe11f1",
+  "sha": "b839d013e8b1543055a3033f637c920ef40c29fb18b6960d5f01b9a56a9b157e",
   "sub_title": "Verifiable reference prices for valuation, settlement and risk.",
   "sub_title_zh": "可验证的参考价,用于估值、结算与风控。",
   "subtitle": "Verifiable reference prices for valuation, settlement and risk.",

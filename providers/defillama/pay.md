@@ -8,7 +8,7 @@ Free x402 passthrough for DefiLlama protocol TVL, fees/revenue and stablecoin da
 - Gateway base: `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron`
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
-- Scheme: `exact_gasfree`
+- Scheme: `exact_permit`
 - Tags: defillama, defi, tvl, fees, stablecoins, free
 - Listed price: free (`0 USD` min and max price)
 

@@ -9,28 +9,13 @@ Use it when an agent, backend workflow, or CLI script has already validated the 
 - FQN: `sunpump-token-launch`
 - Service URL: `https://sunpump.meme`
 - Category: `finance`
-- Chains: `tron:nile`, `tron:mainnet`, `eip155:97`, `eip155:56`
-- TRON Nile gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron-nile`
+- Chains: `tron:mainnet`, `eip155:56`
 - TRON Mainnet gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron`
-- BSC Testnet gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc-testnet`
 - BSC Mainnet gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc`
 
 ## CLI Quick Start
 
 Install or update the x402 CLI, then call the route matching the payment chain you want to use.
-
-TRON Nile:
-
-```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron-nile/pump-api/ai/agentTokenLaunch' \
-  --method POST \
-  --network tron:nile \
-  --token USDT \
-  --scheme exact_gasfree \
-  --max-amount 0.001 \
-  --header 'Content-Type: application/json' \
-  --body '{"name":"X402NileA","symbol":"X4A17","description":"x402 launch test","imageBase64":"","twitterUrl":"","telegramUrl":"","websiteUrl":"","tweetUsername":""}'
-```
 
 TRON Mainnet:
 
@@ -39,23 +24,10 @@ x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch
   --method POST \
   --network tron:mainnet \
   --token USDT \
-  --scheme exact_gasfree \
-  --max-amount 0.001 \
-  --header 'Content-Type: application/json' \
-  --body '{"name":"X402MainA","symbol":"X4M17","description":"x402 launch","imageBase64":"","twitterUrl":"","telegramUrl":"","websiteUrl":"","tweetUsername":""}'
-```
-
-BSC Testnet:
-
-```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc-testnet/pump-api/ai/agentTokenLaunch' \
-  --method POST \
-  --network eip155:97 \
-  --token USDT \
   --scheme exact_permit \
   --max-amount 0.001 \
   --header 'Content-Type: application/json' \
-  --body '{"name":"X402BscTA","symbol":"X4BT17","description":"x402 launch test","imageBase64":"","twitterUrl":"","telegramUrl":"","websiteUrl":"","tweetUsername":""}'
+  --body '{"name":"X402MainA","symbol":"X4M17","description":"x402 launch","imageBase64":"","twitterUrl":"","telegramUrl":"","websiteUrl":"","tweetUsername":""}'
 ```
 
 BSC Mainnet:
@@ -93,5 +65,5 @@ The upstream response returns SunPump status and token launch data such as token
 - The endpoint has side effects: a successful paid call can create a token.
 - Validate metadata before paying. In particular, keep `name` within 1-20 characters.
 - You can provide your own token image with `imageBase64`; otherwise the launch service generates one.
-- Current listed prices are fixed per request across all four payment routes.
+- Current listed prices are fixed per request across both mainnet payment routes.
 - The public catalog does not contain gateway runtime secrets or wallet keys.

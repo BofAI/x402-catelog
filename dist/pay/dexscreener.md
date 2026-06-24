@@ -8,7 +8,7 @@ Free x402 passthrough for DexScreener token/pair data, search and latest token p
 - Gateway base: `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron`
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
-- Scheme: `exact_gasfree`
+- Scheme: `exact_permit`
 - Tags: dexscreener, dex, new-pairs, meme, liquidity, price, free
 - Listed price: free (`0 USD` min and max price)
 

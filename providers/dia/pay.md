@@ -8,7 +8,7 @@ Free x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ mark
 - Gateway base: `https://tm-x402-gateway.bankofai.io/providers/dia-price-tron`
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
-- Scheme: `exact_gasfree`
+- Scheme: `exact_permit`
 - Tags: dia, price, oracle, quotation, multi-source, free
 - Listed price: free (`0 USD` min and max price)
 
