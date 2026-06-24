@@ -1,6 +1,6 @@
-# GoPlus Security API (TRON/BSC x402, Minimum Price)
+# GoPlus Token & Address Security API (TRON x402, Free)
 
-Minimum-price x402 passthrough for GoPlus token, address and approval security checks. Data by GoPlus.
+Free x402 passthrough for GoPlus Security checks (token security / honeypot, malicious address, approval risk). Powered by GoPlus. Agent-native pre-trade risk control.
 
 ## Service
 
@@ -9,8 +9,8 @@ Minimum-price x402 passthrough for GoPlus token, address and approval security c
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_gasfree`
-- Tags: goplus, security, honeypot, risk, token-security, minimum-price
-- Listed price: minimum price (`0.000001 USD` min and max price)
+- Tags: goplus, security, honeypot, risk, token-security, free
+- Listed price: free (`0 USD` min and max price)
 
 ## When To Use
 
@@ -39,18 +39,13 @@ Approval / allowance risk check for a spender contract
 
 ## Code Usage
 
-Pay the catalog route with the x402 CLI. Example:
+Call the catalog route with any HTTP client. Example:
 
 ```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/728126428?contract_addresses=T....' \
-  --method GET \
-  --network tron:mainnet \
-  --token USDT \
-  --scheme exact_gasfree \
-  --max-amount 0.001
+curl -sS 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/728126428?contract_addresses=T....'
 ```
 
-Equivalent route form after payment:
+Equivalent route form:
 
 ```text
 GET https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/728126428?contract_addresses=T....

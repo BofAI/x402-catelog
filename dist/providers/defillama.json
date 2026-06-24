@@ -27,7 +27,7 @@
       "label_zh": "BNB Chain"
     }
   ],
-  "description": "## What it does\n\nDefiLlama gateway over x402: read protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY — all key-free, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents doing DeFi research, allocation and risk screening that need TVL / fees / stablecoin data.\n- Pricing and valuation workflows that need multi-chain current and historical token prices.\n- Yield scouting across pools by APY, TVL and risk.\n\n## Endpoints\n\n- `GET /protocols` — All protocols with current TVL, category and chain breakdown\n- `GET /protocol/{slug}` — Single protocol: historical TVL, fees, tokens, metadata\n- `GET /tvl/{protocol}` — Current total TVL of a protocol (lightweight)\n- `GET /prices/current/{coins}` — Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)\n- `GET /prices/historical/{timestamp}/{coins}` — Historical USD price at a unix timestamp for one or many coins\n- `GET /chart/{coins}` — Price chart (time series) for one or many coins\n- `GET /percentage/{coins}` — Percentage price change over a period for one or many coins\n- `GET /pools` — All yield pools with current APY, TVL, chain, project and risk flags\n- `GET /chart/{pool}` — Historical APY / TVL time series for a single pool id\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Pay the gateway URL with the x402 CLI before the upstream API response is returned. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`.\n",
+  "description": "## What it does\n\nDefiLlama gateway over x402: read protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY — all key-free, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents doing DeFi research, allocation and risk screening that need TVL / fees / stablecoin data.\n- Pricing and valuation workflows that need multi-chain current and historical token prices.\n- Yield scouting across pools by APY, TVL and risk.\n\n## Endpoints\n\n- `GET /protocols` — All protocols with current TVL, category and chain breakdown\n- `GET /protocol/{slug}` — Single protocol: historical TVL, fees, tokens, metadata\n- `GET /tvl/{protocol}` — Current total TVL of a protocol (lightweight)\n- `GET /prices/current/{coins}` — Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)\n- `GET /prices/historical/{timestamp}/{coins}` — Historical USD price at a unix timestamp for one or many coins\n- `GET /chart/{coins}` — Price chart (time series) for one or many coins\n- `GET /percentage/{coins}` — Percentage price change over a period for one or many coins\n- `GET /pools` — All yield pools with current APY, TVL, chain, project and risk flags\n- `GET /chart/{pool}` — Historical APY / TVL time series for a single pool id\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
   "endpoint_count": 9,
   "endpoints": [
     {
@@ -40,10 +40,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/protocols",
       "subtitle": "/protocols",
       "title": "All protocols with current TVL, category and chain breakdown",
@@ -74,10 +74,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/protocol/{slug}",
       "subtitle": "/protocol/{slug}",
       "title": "Single protocol: historical TVL, fees, tokens, metadata",
@@ -108,10 +108,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/tvl/{protocol}",
       "subtitle": "/tvl/{protocol}",
       "title": "Current total TVL of a protocol (lightweight)",
@@ -142,10 +142,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/prices/current/{coins}",
       "subtitle": "/prices/current/{coins}",
       "title": "Current USD price for one or many coins ({chain}:{address} or coingecko:{id}",
@@ -176,10 +176,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/prices/historical/{timestamp}/{coins}",
       "subtitle": "/prices/historical/{timestamp}/{coins}",
       "title": "Historical USD price at a unix timestamp for one or many coins",
@@ -210,10 +210,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/chart/{coins}",
       "subtitle": "/chart/{coins}",
       "title": "Price chart (time series) for one or many coins",
@@ -244,10 +244,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/percentage/{coins}",
       "subtitle": "/percentage/{coins}",
       "title": "Percentage price change over a period for one or many coins",
@@ -278,10 +278,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/pools",
       "subtitle": "/pools",
       "title": "All yield pools with current APY, TVL, chain, project and risk flags",
@@ -312,10 +312,10 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "max_price_usd": 1e-06,
-      "metered": true,
+      "max_price_usd": 0.0,
+      "metered": false,
       "method": "GET",
-      "min_price_usd": 1e-06,
+      "min_price_usd": 0.0,
       "path": "/chart/{pool}",
       "subtitle": "/chart/{pool}",
       "title": "Historical APY / TVL time series for a single pool id",
@@ -346,13 +346,14 @@
     "free"
   ],
   "fqn": "defillama",
-  "has_free_tier": false,
-  "has_metering": true,
+  "has_free_tier": true,
+  "has_metering": false,
   "i18n": {
     "zh-CN": {
-      "description": "## 能做什么\n\nDefiLlama 的 x402 网关:读取协议 TVL、费用/收入与稳定币指标,多链代币现价+历史价+图表,以及 DeFi 资金池收益率/APY——全部免 key,一个 provider 覆盖 TRON 与 BSC 两条付费路由。\n\n## 适合场景\n\n- 需要 TVL/费用/稳定币数据做 DeFi 研究、配置与风险筛查的 Agent。\n- 需要多链现价与历史价的定价/估值流程。\n- 按 APY、TVL 与风险挑选资金池。\n\n## 接口\n\n- `GET /protocols` — 通过 gateway 调用 `/protocols`，用于获取该接口对应的公开数据。\n- `GET /protocol/{slug}` — 通过 gateway 调用 `/protocol/{slug}`，用于获取该接口对应的公开数据。\n- `GET /tvl/{protocol}` — 通过 gateway 调用 `/tvl/{protocol}`，用于获取该接口对应的公开数据。\n- `GET /prices/current/{coins}` — 通过 gateway 调用 `/prices/current/{coins}`，用于获取该接口对应的公开数据。\n- `GET /prices/historical/{timestamp}/{coins}` — 通过 gateway 调用 `/prices/historical/{timestamp}/{coins}`，用于获取该接口对应的公开数据。\n- `GET /chart/{coins}` — 通过 gateway 调用 `/chart/{coins}`，用于获取该接口对应的公开数据。\n- `GET /percentage/{coins}` — 通过 gateway 调用 `/percentage/{coins}`，用于获取该接口对应的公开数据。\n- `GET /pools` — 通过 gateway 调用 `/pools`，用于获取该接口对应的公开数据。\n- `GET /chart/{pool}` — 通过 gateway 调用 `/chart/{pool}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些路由是 x402 保护的最低价付费接口。需要先用 x402 CLI 支付网关 URL,支付完成后才会返回上游 API 结果。TRON 主网(`exact_gasfree`)示例:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供: `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`。\n",
+      "description": "## 能做什么\n\nDefiLlama 的 x402 网关:读取协议 TVL、费用/收入与稳定币指标,多链代币现价+历史价+图表,以及 DeFi 资金池收益率/APY——全部免 key,一个 provider 覆盖 TRON 与 BSC 两条付费路由。\n\n## 适合场景\n\n- 需要 TVL/费用/稳定币数据做 DeFi 研究、配置与风险筛查的 Agent。\n- 需要多链现价与历史价的定价/估值流程。\n- 按 APY、TVL 与风险挑选资金池。\n\n## 接口\n\n- `GET /protocols` — 通过 gateway 调用 `/protocols`，用于获取该接口对应的公开数据。\n- `GET /protocol/{slug}` — 通过 gateway 调用 `/protocol/{slug}`，用于获取该接口对应的公开数据。\n- `GET /tvl/{protocol}` — 通过 gateway 调用 `/tvl/{protocol}`，用于获取该接口对应的公开数据。\n- `GET /prices/current/{coins}` — 通过 gateway 调用 `/prices/current/{coins}`，用于获取该接口对应的公开数据。\n- `GET /prices/historical/{timestamp}/{coins}` — 通过 gateway 调用 `/prices/historical/{timestamp}/{coins}`，用于获取该接口对应的公开数据。\n- `GET /chart/{coins}` — 通过 gateway 调用 `/chart/{coins}`，用于获取该接口对应的公开数据。\n- `GET /percentage/{coins}` — 通过 gateway 调用 `/percentage/{coins}`，用于获取该接口对应的公开数据。\n- `GET /pools` — 通过 gateway 调用 `/pools`，用于获取该接口对应的公开数据。\n- `GET /chart/{pool}` — 通过 gateway 调用 `/chart/{pool}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_gasfree`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
+      "mainTitle": "聚合 DeFi 数据 — TVL、费用、价格、收益率",
       "subtitle": "免 key 的 DeFi 决策数据,供 Agent 研究、定价与风控。",
-      "title": "DefiLlama 数据",
+      "title": "DefiLlama",
       "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
     }
   },
@@ -360,19 +361,21 @@
   "is_first_party": false,
   "logo": "https://defillama.com/favicon.ico",
   "main_title": "Aggregated DeFi data — TVL, fees, prices & yields",
-  "max_price_usd": 1e-06,
-  "min_price_usd": 1e-06,
+  "main_title_zh": "聚合 DeFi 数据 — TVL、费用、价格、收益率",
+  "max_price_usd": 0.0,
+  "min_price_usd": 0.0,
   "service_url": "https://defillama.com",
-  "sha": "c698bc46cff2096e70c37af5a599a7ffae54f6da3965e5ec6321108b32d7675e",
+  "sha": "4eb807478e91965f1a8cda36b6be76f8ac7aac656b64f8531b439cc5ddfd5a01",
   "status": {
     "catalog": "listed",
     "gateway": "configured",
-    "payment": "minimum-price",
+    "payment": "free-route",
     "upstream": "public"
   },
   "sub_title": "Key-free DeFi decision data for agent research, pricing and risk.",
+  "sub_title_zh": "免 key 的 DeFi 决策数据,供 Agent 研究、定价与风控。",
   "subtitle": "Key-free DeFi decision data for agent research, pricing and risk.",
   "title": "DefiLlama",
-  "title_zh": "DefiLlama 数据",
+  "title_zh": "DefiLlama",
   "use_case": "Use to read protocol TVL, fees/revenue and stablecoin metrics for DeFi research, allocation or risk screening."
 }

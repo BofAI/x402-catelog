@@ -1,6 +1,6 @@
-# DefiLlama DeFi Data API (TRON/BSC x402, Minimum Price)
+# DefiLlama DeFi Data API (TVL / Fees / Stablecoins) (TRON x402, Free)
 
-Minimum-price x402 passthrough for DefiLlama protocol TVL, fees/revenue, token prices and pool yields. Key-free DeFi decision data layer for agents. Data by DefiLlama.
+Free x402 passthrough for DefiLlama protocol TVL, fees/revenue and stablecoin data. Key-free DeFi decision data layer for agents. Data by DefiLlama.
 
 ## Service
 
@@ -9,8 +9,8 @@ Minimum-price x402 passthrough for DefiLlama protocol TVL, fees/revenue, token p
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_gasfree`
-- Tags: defillama, defi, tvl, fees, stablecoins, minimum-price
-- Listed price: minimum price (`0.000001 USD` min and max price)
+- Tags: defillama, defi, tvl, fees, stablecoins, free
+- Listed price: free (`0 USD` min and max price)
 
 ## When To Use
 
@@ -40,18 +40,13 @@ Current total TVL of a protocol (lightweight)
 
 ## Code Usage
 
-Pay the catalog route with the x402 CLI. Example:
+Call the catalog route with any HTTP client. Example:
 
 ```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \
-  --method GET \
-  --network tron:mainnet \
-  --token USDT \
-  --scheme exact_gasfree \
-  --max-amount 0.001
+curl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'
 ```
 
-Equivalent route form after payment:
+Equivalent route form:
 
 ```text
 GET https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols

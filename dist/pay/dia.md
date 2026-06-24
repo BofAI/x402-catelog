@@ -1,6 +1,6 @@
-# DIA Oracle Price API (TRON/BSC x402, Minimum Price)
+# DIA Multi-Source Token Price API (TRON x402, Free)
 
-Minimum-price x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ markets, key-free). Manipulation-resistant price source for agents. Data by DIA.
+Free x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ markets, key-free). Manipulation-resistant price source for agents. Data by DIA.
 
 ## Service
 
@@ -9,8 +9,8 @@ Minimum-price x402 passthrough for DIA real-time token quotations (3000+ assets,
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_gasfree`
-- Tags: dia, price, oracle, quotation, multi-source, minimum-price
-- Listed price: minimum price (`0.000001 USD` min and max price)
+- Tags: dia, price, oracle, quotation, multi-source, free
+- Listed price: free (`0 USD` min and max price)
 
 ## When To Use
 
@@ -36,18 +36,13 @@ Aggregated price quotation by blockchain + contract address
 
 ## Code Usage
 
-Pay the catalog route with the x402 CLI. Example:
+Call the catalog route with any HTTP client. Example:
 
 ```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/BTC' \
-  --method GET \
-  --network tron:mainnet \
-  --token USDT \
-  --scheme exact_gasfree \
-  --max-amount 0.001
+curl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/BTC'
 ```
 
-Equivalent route form after payment:
+Equivalent route form:
 
 ```text
 GET https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/BTC

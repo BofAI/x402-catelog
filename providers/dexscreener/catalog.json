@@ -4,14 +4,15 @@
   "title": "DexScreener",
   "mainTitle": "Real-time DEX pairs, prices & new listings",
   "subtitle": "On-chain market radar for new pools, momentum and liquidity.",
-  "description": "## What it does\n\nDexScreener market data over x402: search DEX trading pairs, read live price / liquidity / volume, and surface newly launched and trending tokens across major chains, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- New-pool / meme-launch radar for agents tracking fresh listings.\n- Momentum and liquidity checks before entering a position.\n- Pair lookups by token address or symbol.\n\n## Endpoints\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses\n- `GET /latest/dex/search` — Search pairs by token name/symbol/address\n- `GET /token-profiles/latest/v1` — Latest token profiles (new-launch / discovery radar)\n\n## Code usage\n\nThese routes are x402-protected minimum-price endpoints. Pay the gateway URL with the x402 CLI before the upstream API response is returned. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/...`.\n",
+  "description": "## What it does\n\nDexScreener market data over x402: search DEX trading pairs, read live price / liquidity / volume, and surface newly launched and trending tokens across major chains, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- New-pool / meme-launch radar for agents tracking fresh listings.\n- Momentum and liquidity checks before entering a position.\n- Pair lookups by token address or symbol.\n\n## Endpoints\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses\n- `GET /latest/dex/search` — Search pairs by token name/symbol/address\n- `GET /token-profiles/latest/v1` — Latest token profiles (new-launch / discovery radar)\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_gasfree`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
   "useCase": "Use to look up a token's DEX pairs/price/liquidity, search tokens, or pull the latest token profiles for new-launch / meme screening.",
   "i18n": {
     "zh-CN": {
       "title": "DexScreener",
       "subtitle": "链上行情雷达:新盘、动量与流动性。",
-      "description": "## 能做什么\n\nDexScreener 行情的 x402 网关:搜索 DEX 交易对,读取实时价格/流动性/成交量,发现各主流链上新上线与热门代币,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 追踪新盘/meme 上新的 Agent 雷达。\n- 入场前查看动量与流动性。\n- 按代币地址或符号查交易对。\n\n## 接口\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — 通过 gateway 调用 `/latest/dex/tokens/{tokenAddresses}`，用于获取该接口对应的公开数据。\n- `GET /latest/dex/search` — 通过 gateway 调用 `/latest/dex/search`，用于获取该接口对应的公开数据。\n- `GET /token-profiles/latest/v1` — 通过 gateway 调用 `/token-profiles/latest/v1`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些路由是 x402 保护的最低价付费接口。需要先用 x402 CLI 支付网关 URL,支付完成后才会返回上游 API 结果。TRON 主网(`exact_gasfree`)示例:\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供: `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/...`。\n",
-      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
+      "description": "## 能做什么\n\nDexScreener 行情的 x402 网关:搜索 DEX 交易对,读取实时价格/流动性/成交量,发现各主流链上新上线与热门代币,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 追踪新盘/meme 上新的 Agent 雷达。\n- 入场前查看动量与流动性。\n- 按代币地址或符号查交易对。\n\n## 接口\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — 通过 gateway 调用 `/latest/dex/tokens/{tokenAddresses}`，用于获取该接口对应的公开数据。\n- `GET /latest/dex/search` — 通过 gateway 调用 `/latest/dex/search`，用于获取该接口对应的公开数据。\n- `GET /token-profiles/latest/v1` — 通过 gateway 调用 `/token-profiles/latest/v1`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_gasfree`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_gasfree \\\n  --max-amount 0.001\n```",
+      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。",
+      "mainTitle": "实时 DEX 交易对、价格与新盘"
     }
   },
   "logo": "https://dexscreener.com/favicon.ico",
@@ -49,9 +50,9 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "metered": true,
-      "minPriceUsd": 1e-06,
-      "maxPriceUsd": 1e-06,
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
       "x402Routes": [
         {
           "provider": "dexscreener-dex-data-tron",
@@ -83,9 +84,9 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "metered": true,
-      "minPriceUsd": 1e-06,
-      "maxPriceUsd": 1e-06,
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
       "x402Routes": [
         {
           "provider": "dexscreener-dex-data-tron",
@@ -117,9 +118,9 @@
           "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
         }
       },
-      "metered": true,
-      "minPriceUsd": 1e-06,
-      "maxPriceUsd": 1e-06,
+      "metered": false,
+      "minPriceUsd": 0.0,
+      "maxPriceUsd": 0.0,
       "x402Routes": [
         {
           "provider": "dexscreener-dex-data-tron",
@@ -139,7 +140,7 @@
   "status": {
     "catalog": "listed",
     "gateway": "configured",
-    "payment": "minimum-price",
+    "payment": "free-route",
     "upstream": "public"
   }
 }
