@@ -1,6 +1,6 @@
-# DexScreener DEX Pairs & New-Listing API (TRON x402, Free)
+# DexScreener DEX Pairs & New-Listing API (TRON x402, Paid)
 
-Free x402 passthrough for DexScreener token/pair data, search and latest token profiles. New-launch / meme radar data for trading agents. Data by DexScreener.
+x402-paid passthrough for DexScreener token/pair data, search and latest token profiles. New-launch / meme radar data for trading agents. Data by DexScreener.
 
 ## Service
 
@@ -9,8 +9,8 @@ Free x402 passthrough for DexScreener token/pair data, search and latest token p
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_permit`
-- Tags: dexscreener, dex, new-pairs, meme, liquidity, price, free
-- Listed price: free (`0 USD` min and max price)
+- Tags: dexscreener, dex, new-pairs, meme, liquidity, price
+- Listed price: `0.001 USD` per request
 
 ## When To Use
 

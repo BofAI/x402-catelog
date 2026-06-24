@@ -31,7 +31,7 @@
       "sunpump-token-launch"
     ]
   },
-  "generated_at": "2026-06-24T07:19:16Z",
+  "generated_at": "2026-06-24T07:59:15Z",
   "provider_count": 5,
   "providers": [
     {
@@ -129,7 +129,7 @@
           "label_zh": "BNB Chain"
         }
       ],
-      "description": "## What it does\n\nDefiLlama gateway over x402: read protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY — all key-free, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents doing DeFi research, allocation and risk screening that need TVL / fees / stablecoin data.\n- Pricing and valuation workflows that need multi-chain current and historical token prices.\n- Yield scouting across pools by APY, TVL and risk.\n\n## Endpoints\n\n- `GET /protocols` — All protocols with current TVL, category and chain breakdown\n- `GET /protocol/{slug}` — Single protocol: historical TVL, fees, tokens, metadata\n- `GET /tvl/{protocol}` — Current total TVL of a protocol (lightweight)\n- `GET /prices/current/{coins}` — Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)\n- `GET /prices/historical/{timestamp}/{coins}` — Historical USD price at a unix timestamp for one or many coins\n- `GET /chart/{coins}` — Price chart (time series) for one or many coins\n- `GET /percentage/{coins}` — Percentage price change over a period for one or many coins\n- `GET /pools` — All yield pools with current APY, TVL, chain, project and risk flags\n- `GET /chart/{pool}` — Historical APY / TVL time series for a single pool id\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+      "description": "## What it does\n\nDefiLlama gateway over x402: read protocol TVL, fees/revenue and stablecoin metrics, multi-chain current & historical token prices with charts, and DeFi pool yields/APY — through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents doing DeFi research, allocation and risk screening that need TVL / fees / stablecoin data.\n- Pricing and valuation workflows that need multi-chain current and historical token prices.\n- Yield scouting across pools by APY, TVL and risk.\n\n## Endpoints\n\n- `GET /protocols` — All protocols with current TVL, category and chain breakdown\n- `GET /protocol/{slug}` — Single protocol: historical TVL, fees, tokens, metadata\n- `GET /tvl/{protocol}` — Current total TVL of a protocol (lightweight)\n- `GET /prices/current/{coins}` — Current USD price for one or many coins ({chain}:{address} or coingecko:{id}, comma-separated)\n- `GET /prices/historical/{timestamp}/{coins}` — Historical USD price at a unix timestamp for one or many coins\n- `GET /chart/{coins}` — Price chart (time series) for one or many coins\n- `GET /percentage/{coins}` — Percentage price change over a period for one or many coins\n- `GET /pools` — All yield pools with current APY, TVL, chain, project and risk flags\n- `GET /chart/{pool}` — Historical APY / TVL time series for a single pool id\n\n## Code usage\n\nThese routes are x402-paid passthroughs. Use x402 payment for gateway access. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
       "endpoint_count": 9,
       "featured_tags": [
         "defillama",
@@ -137,16 +137,16 @@
         "tvl",
         "fees",
         "stablecoins",
-        "free"
+        "paid"
       ],
       "fqn": "defillama",
-      "has_free_tier": true,
-      "has_metering": false,
+      "has_free_tier": false,
+      "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "## 能做什么\n\nDefiLlama 的 x402 网关:读取协议 TVL、费用/收入与稳定币指标,多链代币现价+历史价+图表,以及 DeFi 资金池收益率/APY——全部免 key,一个 provider 覆盖 TRON 与 BSC 两条付费路由。\n\n## 适合场景\n\n- 需要 TVL/费用/稳定币数据做 DeFi 研究、配置与风险筛查的 Agent。\n- 需要多链现价与历史价的定价/估值流程。\n- 按 APY、TVL 与风险挑选资金池。\n\n## 接口\n\n- `GET /protocols` — 通过 gateway 调用 `/protocols`，用于获取该接口对应的公开数据。\n- `GET /protocol/{slug}` — 通过 gateway 调用 `/protocol/{slug}`，用于获取该接口对应的公开数据。\n- `GET /tvl/{protocol}` — 通过 gateway 调用 `/tvl/{protocol}`，用于获取该接口对应的公开数据。\n- `GET /prices/current/{coins}` — 通过 gateway 调用 `/prices/current/{coins}`，用于获取该接口对应的公开数据。\n- `GET /prices/historical/{timestamp}/{coins}` — 通过 gateway 调用 `/prices/historical/{timestamp}/{coins}`，用于获取该接口对应的公开数据。\n- `GET /chart/{coins}` — 通过 gateway 调用 `/chart/{coins}`，用于获取该接口对应的公开数据。\n- `GET /percentage/{coins}` — 通过 gateway 调用 `/percentage/{coins}`，用于获取该接口对应的公开数据。\n- `GET /pools` — 通过 gateway 调用 `/pools`，用于获取该接口对应的公开数据。\n- `GET /chart/{pool}` — 通过 gateway 调用 `/chart/{pool}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+          "description": "## 能做什么\n\nDefiLlama 的 x402 网关:读取协议 TVL、费用/收入与稳定币指标,多链代币现价+历史价+图表,以及 DeFi 资金池收益率/APY——一个 provider 覆盖 TRON 与 BSC 两条付费路由。\n\n## 适合场景\n\n- 需要 TVL/费用/稳定币数据做 DeFi 研究、配置与风险筛查的 Agent。\n- 需要多链现价与历史价的定价/估值流程。\n- 按 APY、TVL 与风险挑选资金池。\n\n## 接口\n\n- `GET /protocols` — 通过 gateway 调用 `/protocols`，用于获取该接口对应的公开数据。\n- `GET /protocol/{slug}` — 通过 gateway 调用 `/protocol/{slug}`，用于获取该接口对应的公开数据。\n- `GET /tvl/{protocol}` — 通过 gateway 调用 `/tvl/{protocol}`，用于获取该接口对应的公开数据。\n- `GET /prices/current/{coins}` — 通过 gateway 调用 `/prices/current/{coins}`，用于获取该接口对应的公开数据。\n- `GET /prices/historical/{timestamp}/{coins}` — 通过 gateway 调用 `/prices/historical/{timestamp}/{coins}`，用于获取该接口对应的公开数据。\n- `GET /chart/{coins}` — 通过 gateway 调用 `/chart/{coins}`，用于获取该接口对应的公开数据。\n- `GET /percentage/{coins}` — 通过 gateway 调用 `/percentage/{coins}`，用于获取该接口对应的公开数据。\n- `GET /pools` — 通过 gateway 调用 `/pools`，用于获取该接口对应的公开数据。\n- `GET /chart/{pool}` — 通过 gateway 调用 `/chart/{pool}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是 x402 付费直通路由,通过 x402 支付后访问网关。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。使用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/defillama-tvl-tron/protocols' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
           "mainTitle": "聚合 DeFi 数据 — TVL、费用、价格、收益率",
-          "subtitle": "免 key 的 DeFi 决策数据,供 Agent 研究、定价与风控。",
+          "subtitle": "付费 DeFi 决策数据,供 Agent 研究、定价与风控。",
           "title": "DefiLlama",
           "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
         }
@@ -156,13 +156,13 @@
       "logo": "https://defillama.com/favicon.ico",
       "main_title": "Aggregated DeFi data — TVL, fees, prices & yields",
       "main_title_zh": "聚合 DeFi 数据 — TVL、费用、价格、收益率",
-      "max_price_usd": 0,
-      "min_price_usd": 0,
+      "max_price_usd": 0.001,
+      "min_price_usd": 0.001,
       "service_url": "https://defillama.com",
-      "sha": "977c10e0d218205ff4dfcbeec6809fa24e6a88b0b537009f2dbc21d0190c0ffa",
-      "sub_title": "Key-free DeFi decision data for agent research, pricing and risk.",
-      "sub_title_zh": "免 key 的 DeFi 决策数据,供 Agent 研究、定价与风控。",
-      "subtitle": "Key-free DeFi decision data for agent research, pricing and risk.",
+      "sha": "ae32e053e5e4ec637a87a0b5c2576cf43cac4f1ceff32ac97d346e94ee49c8c8",
+      "sub_title": "Paid DeFi decision data for agent research, pricing and risk.",
+      "sub_title_zh": "付费 DeFi 决策数据,供 Agent 研究、定价与风控。",
+      "subtitle": "Paid DeFi decision data for agent research, pricing and risk.",
       "title": "DefiLlama",
       "title_zh": "DefiLlama",
       "use_case": "Use to read protocol TVL, fees/revenue and stablecoin metrics for DeFi research, allocation or risk screening."
@@ -196,7 +196,7 @@
           "label_zh": "BNB Chain"
         }
       ],
-      "description": "## What it does\n\nDexScreener market data over x402: search DEX trading pairs, read live price / liquidity / volume, and surface newly launched and trending tokens across major chains, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- New-pool / meme-launch radar for agents tracking fresh listings.\n- Momentum and liquidity checks before entering a position.\n- Pair lookups by token address or symbol.\n\n## Endpoints\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses\n- `GET /latest/dex/search` — Search pairs by token name/symbol/address\n- `GET /token-profiles/latest/v1` — Latest token profiles (new-launch / discovery radar)\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+      "description": "## What it does\n\nDexScreener market data over x402: search DEX trading pairs, read live price / liquidity / volume, and surface newly launched and trending tokens across major chains, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- New-pool / meme-launch radar for agents tracking fresh listings.\n- Momentum and liquidity checks before entering a position.\n- Pair lookups by token address or symbol.\n\n## Endpoints\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses\n- `GET /latest/dex/search` — Search pairs by token name/symbol/address\n- `GET /token-profiles/latest/v1` — Latest token profiles (new-launch / discovery radar)\n\n## Code usage\n\nThese routes are x402-paid passthroughs. Use x402 payment for gateway access. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
       "endpoint_count": 3,
       "featured_tags": [
         "dexscreener",
@@ -205,14 +205,14 @@
         "meme",
         "liquidity",
         "price",
-        "free"
+        "paid"
       ],
       "fqn": "dexscreener",
-      "has_free_tier": true,
-      "has_metering": false,
+      "has_free_tier": false,
+      "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "## 能做什么\n\nDexScreener 行情的 x402 网关:搜索 DEX 交易对,读取实时价格/流动性/成交量,发现各主流链上新上线与热门代币,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 追踪新盘/meme 上新的 Agent 雷达。\n- 入场前查看动量与流动性。\n- 按代币地址或符号查交易对。\n\n## 接口\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — 通过 gateway 调用 `/latest/dex/tokens/{tokenAddresses}`，用于获取该接口对应的公开数据。\n- `GET /latest/dex/search` — 通过 gateway 调用 `/latest/dex/search`，用于获取该接口对应的公开数据。\n- `GET /token-profiles/latest/v1` — 通过 gateway 调用 `/token-profiles/latest/v1`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+          "description": "## 能做什么\n\nDexScreener 行情的 x402 网关:搜索 DEX 交易对,读取实时价格/流动性/成交量,发现各主流链上新上线与热门代币,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 追踪新盘/meme 上新的 Agent 雷达。\n- 入场前查看动量与流动性。\n- 按代币地址或符号查交易对。\n\n## 接口\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — 通过 gateway 调用 `/latest/dex/tokens/{tokenAddresses}`，用于获取该接口对应的公开数据。\n- `GET /latest/dex/search` — 通过 gateway 调用 `/latest/dex/search`，用于获取该接口对应的公开数据。\n- `GET /token-profiles/latest/v1` — 通过 gateway 调用 `/token-profiles/latest/v1`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是 x402 付费直通路由,通过 x402 支付后访问网关。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。使用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
           "mainTitle": "实时 DEX 交易对、价格与新盘",
           "subtitle": "链上行情雷达:新盘、动量与流动性。",
           "title": "DexScreener",
@@ -224,10 +224,10 @@
       "logo": "https://dexscreener.com/favicon.ico",
       "main_title": "Real-time DEX pairs, prices & new listings",
       "main_title_zh": "实时 DEX 交易对、价格与新盘",
-      "max_price_usd": 0,
-      "min_price_usd": 0,
+      "max_price_usd": 0.001,
+      "min_price_usd": 0.001,
       "service_url": "https://dexscreener.com",
-      "sha": "21037ca7ac618fc6fbf03b39f1bfd806dcc38e77974808304341b5e5dfda0199",
+      "sha": "637c098ea00a845d5eff97840e83543c54eb066f97117bbe9a62a70ea4f877f8",
       "sub_title": "On-chain market radar for new pools, momentum and liquidity.",
       "sub_title_zh": "链上行情雷达:新盘、动量与流动性。",
       "subtitle": "On-chain market radar for new pools, momentum and liquidity.",
@@ -264,7 +264,7 @@
           "label_zh": "BNB Chain"
         }
       ],
-      "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+      "description": "## What it does\n\nDIA oracle price feeds over x402: transparent, multi-source aggregated token quotations across 80+ CEX/DEX markets for 3,000+ assets, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Agents needing verifiable reference prices for valuation or settlement.\n- Manipulation-resistant pricing as a risk or compliance check.\n- Cross-checking a venue spot price against an independent oracle.\n\n## Endpoints\n\n- `GET /v1/quotation/{symbol}` — Aggregated price quotation by asset symbol\n- `GET /v1/assetQuotation/{blockchain}/{address}` — Aggregated price quotation by blockchain + contract address\n\n## Code usage\n\nThese routes are x402-paid passthroughs. Use x402 payment for gateway access. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/dia-price-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
       "endpoint_count": 2,
       "featured_tags": [
         "dia",
@@ -272,14 +272,14 @@
         "oracle",
         "quotation",
         "multi-source",
-        "free"
+        "paid"
       ],
       "fqn": "dia",
-      "has_free_tier": true,
-      "has_metering": false,
+      "has_free_tier": false,
+      "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "## 能做什么\n\nDIA 预言机价格的 x402 网关:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 需要可验证参考价做估值或结算的 Agent。\n- 用抗操纵价格做风控/合规校验。\n- 与盘口现价交叉验证。\n\n## 接口\n\n- `GET /v1/quotation/{symbol}` — 通过 gateway 调用 `/v1/quotation/{symbol}`，用于获取该接口对应的公开数据。\n- `GET /v1/assetQuotation/{blockchain}/{address}` — 通过 gateway 调用 `/v1/assetQuotation/{blockchain}/{address}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+          "description": "## 能做什么\n\nDIA 预言机价格的 x402 网关:跨 80+ CEX/DEX 市场、覆盖 3000+ 资产的透明多源聚合报价,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 需要可验证参考价做估值或结算的 Agent。\n- 用抗操纵价格做风控/合规校验。\n- 与盘口现价交叉验证。\n\n## 接口\n\n- `GET /v1/quotation/{symbol}` — 通过 gateway 调用 `/v1/quotation/{symbol}`，用于获取该接口对应的公开数据。\n- `GET /v1/assetQuotation/{blockchain}/{address}` — 通过 gateway 调用 `/v1/assetQuotation/{blockchain}/{address}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是 x402 付费直通路由,通过 x402 支付后访问网关。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。使用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/dia-price-tron/v1/quotation/{symbol}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
           "mainTitle": "去中心化多源预言机价格",
           "subtitle": "可验证的参考价,用于估值、结算与风控。",
           "title": "DIA",
@@ -291,10 +291,10 @@
       "logo": "https://www.diadata.org/favicon.png",
       "main_title": "Decentralized multi-source oracle prices",
       "main_title_zh": "去中心化多源预言机价格",
-      "max_price_usd": 0,
-      "min_price_usd": 0,
+      "max_price_usd": 0.001,
+      "min_price_usd": 0.001,
       "service_url": "https://www.diadata.org",
-      "sha": "b839d013e8b1543055a3033f637c920ef40c29fb18b6960d5f01b9a56a9b157e",
+      "sha": "177adc73b164a9c3bf873b4f41f4cc3d7f2a5546d18c129652868cfa2f65ee44",
       "sub_title": "Verifiable reference prices for valuation, settlement and risk.",
       "sub_title_zh": "可验证的参考价,用于估值、结算与风控。",
       "subtitle": "Verifiable reference prices for valuation, settlement and risk.",
@@ -331,7 +331,7 @@
           "label_zh": "BNB Chain"
         }
       ],
-      "description": "## What it does\n\nGoPlus Security API over x402: scan token contracts and wallet addresses for risks — honeypots, buy/sell tax, mintable/blacklist/proxy permissions and known malicious addresses — through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Pre-trade safety screening before a swap.\n- Wallet / address risk checks before transfers or approvals.\n- Automated due-diligence inside agent trading flows.\n\n## Endpoints\n\n- `GET /api/v1/token_security/{chain_id}` — Token security report (honeypot, taxes, owner privileges, holders) for one or more contracts\n- `GET /api/v1/address_security/{address}` — Malicious-address check (sanctions, phishing, known scam)\n- `GET /api/v1/approval_security/{chain_id}` — Approval / allowance risk check for a spender contract\n\n## Code usage\n\nThese routes are key-free passthroughs — call the gateway URL directly. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-bsc/...`.\n\nIf a route becomes priced, pay it with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+      "description": "## What it does\n\nGoPlus Security API over x402: scan token contracts and wallet addresses for risks — honeypots, buy/sell tax, mintable/blacklist/proxy permissions and known malicious addresses — through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- Pre-trade safety screening before a swap.\n- Wallet / address risk checks before transfers or approvals.\n- Automated due-diligence inside agent trading flows.\n\n## Endpoints\n\n- `GET /api/v1/token_security/{chain_id}` — Token security report (honeypot, taxes, owner privileges, holders) for one or more contracts\n- `GET /api/v1/address_security/{address}` — Malicious-address check (sanctions, phishing, known scam)\n- `GET /api/v1/approval_security/{chain_id}` — Approval / allowance risk check for a spender contract\n\n## Code usage\n\nThese routes are x402-paid passthroughs. Use x402 payment for gateway access. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}'\n```\n\nThe same path is also served on BSC (`eip155:56`, `exact_permit`) at `https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-bsc/...`.\n\nPay with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
       "endpoint_count": 3,
       "featured_tags": [
         "goplus",
@@ -339,14 +339,14 @@
         "honeypot",
         "risk",
         "token-security",
-        "free"
+        "paid"
       ],
       "fqn": "goplus",
-      "has_free_tier": true,
-      "has_metering": false,
+      "has_free_tier": false,
+      "has_metering": true,
       "i18n": {
         "zh-CN": {
-          "description": "## 能做什么\n\nGoPlus 安全 API 的 x402 网关:扫描代币合约与钱包地址风险——貔貅、买卖税、增发/黑名单/代理权限以及已知恶意地址,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 兑换前的安全筛查。\n- 转账或授权前的地址风险检查。\n- Agent 交易流中的自动尽调。\n\n## 接口\n\n- `GET /api/v1/token_security/{chain_id}` — 通过 gateway 调用 `/api/v1/token_security/{chain_id}`，用于获取该接口对应的公开数据。\n- `GET /api/v1/address_security/{address}` — 通过 gateway 调用 `/api/v1/address_security/{address}`，用于获取该接口对应的公开数据。\n- `GET /api/v1/approval_security/{chain_id}` — 通过 gateway 调用 `/api/v1/approval_security/{chain_id}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是免 key 直通路由,直接请求网关 URL 即可。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。如该路由变收费,用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+          "description": "## 能做什么\n\nGoPlus 安全 API 的 x402 网关:扫描代币合约与钱包地址风险——貔貅、买卖税、增发/黑名单/代理权限以及已知恶意地址,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 兑换前的安全筛查。\n- 转账或授权前的地址风险检查。\n- Agent 交易流中的自动尽调。\n\n## 接口\n\n- `GET /api/v1/token_security/{chain_id}` — 通过 gateway 调用 `/api/v1/token_security/{chain_id}`，用于获取该接口对应的公开数据。\n- `GET /api/v1/address_security/{address}` — 通过 gateway 调用 `/api/v1/address_security/{address}`，用于获取该接口对应的公开数据。\n- `GET /api/v1/approval_security/{chain_id}` — 通过 gateway 调用 `/api/v1/approval_security/{chain_id}`，用于获取该接口对应的公开数据。\n\n## 调用示例\n\n这些是 x402 付费直通路由,通过 x402 支付后访问网关。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}'\n```\n\n同一路径在 BSC(`eip155:56`,`exact_permit`)上也提供。使用 x402 CLI 付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api/v1/token_security/{chain_id}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
           "mainTitle": "代币与地址安全风控检测",
           "subtitle": "交易前安全筛查:兑换、转账与授权。",
           "title": "GoPlus",
@@ -358,10 +358,10 @@
       "logo": "https://gopluslabs.io/favicon.png",
       "main_title": "Token & address security risk checks",
       "main_title_zh": "代币与地址安全风控检测",
-      "max_price_usd": 0,
-      "min_price_usd": 0,
+      "max_price_usd": 0.001,
+      "min_price_usd": 0.001,
       "service_url": "https://gopluslabs.io",
-      "sha": "9d3b05ad1e9d1232bc9a6a43c4468268947314caacb395d059b2283a837d67b2",
+      "sha": "6ae7cbb90d5cc651c8c0d2eb279e33075c9a97e0a4ca8edf28234516ade3b4b6",
       "sub_title": "Pre-trade safety screening for swaps, transfers and approvals.",
       "sub_title_zh": "交易前安全筛查:兑换、转账与授权。",
       "subtitle": "Pre-trade safety screening for swaps, transfers and approvals.",

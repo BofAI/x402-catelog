@@ -1,6 +1,6 @@
-# DIA Multi-Source Token Price API (TRON x402, Free)
+# DIA Multi-Source Token Price API (TRON x402, Paid)
 
-Free x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ markets, key-free). Manipulation-resistant price source for agents. Data by DIA.
+x402-paid passthrough for DIA real-time token quotations (3000+ assets, 80+ markets, keyless). Manipulation-resistant price source for agents. Data by DIA.
 
 ## Service
 
@@ -9,8 +9,8 @@ Free x402 passthrough for DIA real-time token quotations (3000+ assets, 80+ mark
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_permit`
-- Tags: dia, price, oracle, quotation, multi-source, free
-- Listed price: free (`0 USD` min and max price)
+- Tags: dia, price, oracle, quotation, multi-source
+- Listed price: `0.001 USD` per request
 
 ## When To Use
 

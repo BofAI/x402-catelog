@@ -1,6 +1,6 @@
-# GoPlus Token & Address Security API (TRON x402, Free)
+# GoPlus Token & Address Security API (TRON x402, Paid)
 
-Free x402 passthrough for GoPlus Security checks (token security / honeypot, malicious address, approval risk). Powered by GoPlus. Agent-native pre-trade risk control.
+x402-paid passthrough for GoPlus Security checks (token security / honeypot, malicious address, approval risk). Powered by GoPlus. Agent-native pre-trade risk control.
 
 ## Service
 
@@ -9,8 +9,8 @@ Free x402 passthrough for GoPlus Security checks (token security / honeypot, mal
 - Category: `finance`
 - Chain: `tron:mainnet` (TRON)
 - Scheme: `exact_permit`
-- Tags: goplus, security, honeypot, risk, token-security, free
-- Listed price: free (`0 USD` min and max price)
+- Tags: goplus, security, honeypot, risk, token-security
+- Listed price: `0.001 USD` per request
 
 ## When To Use
 
@@ -53,7 +53,7 @@ GET https://tm-x402-gateway.bankofai.io/providers/goplus-token-security-tron/api
 
 ## Spend-Aware Usage
 
-- Free endpoint, but still batch multiple contract addresses in one call where the upstream allows it.
+- Batch multiple contract addresses in one paid call where the upstream allows it.
 - Cache results per (chain_id, contract) for a few minutes; token security rarely changes intra-session.
 
 ## When Not To Use
