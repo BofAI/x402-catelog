@@ -10,8 +10,8 @@ Use it when an agent, backend workflow, or CLI script has already validated the 
 - Service URL: `https://sunpump.meme`
 - Category: `finance`
 - Chains: `tron:mainnet`, `eip155:56`
-- TRON Mainnet gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron`
-- BSC Mainnet gateway base: `https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc`
+- TRON Mainnet gateway base: `https://x402-gateway.bankofai.io/providers/sunpump-token-launch-tron`
+- BSC Mainnet gateway base: `https://x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc`
 
 ## CLI Quick Start
 
@@ -20,7 +20,7 @@ Install or update the x402 CLI, then call the route matching the payment chain y
 TRON Mainnet:
 
 ```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-tron/pump-api/ai/agentTokenLaunch' \
+x402-cli pay 'https://x402-gateway.bankofai.io/providers/sunpump-token-launch-tron/pump-api/ai/agentTokenLaunch' \
   --method POST \
   --network tron:mainnet \
   --token USDT \
@@ -33,7 +33,7 @@ x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch
 BSC Mainnet:
 
 ```bash
-x402-cli pay 'https://tm-x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc/pump-api/ai/agentTokenLaunch' \
+x402-cli pay 'https://x402-gateway.bankofai.io/providers/sunpump-token-launch-bsc/pump-api/ai/agentTokenLaunch' \
   --method POST \
   --network eip155:56 \
   --token USDT \
