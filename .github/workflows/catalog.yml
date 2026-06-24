@@ -3,9 +3,17 @@ name: catalog
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, test/open-meteo-catalog-flow]
+    tags: ["test-v*", "v*"]
   schedule:
     - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: bankofai/x402-catelog
 
 jobs:
   validate:
@@ -14,6 +22,113 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - run: python3 scripts/validate.py
-      - run: python3 scripts/build.py
+          python-version: "3.12"
+
+      - name: Validate public provider files
+        run: python3 scripts/validate.py
+
+      - name: Build static catalog snapshot
+        run: python3 scripts/build.py
+
+      - name: Verify generated files exist
+        run: |
+          test -f dist/status.json
+          test -f dist/catalog.json
+          test -f dist/categories.json
+          test -f dist/search-index.json
+
+      - name: Check expected providers are discoverable
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          expected = {
+              "sunpump-token-launch",
+              "defillama",
+              "dexscreener",
+              "dia",
+              "goplus",
+          }
+          catalog = json.loads(Path("dist/catalog.json").read_text())
+          fqns = {provider["fqn"] for provider in catalog["providers"]}
+          assert fqns == expected, fqns
+          assert catalog["provider_count"] == len(expected), catalog["provider_count"]
+          PY
+
+      - name: Upload static catalog snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: x402-catalog-dist
+          path: dist/
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'push' && github.ref_type == 'tag' && (startsWith(github.ref_name, 'test-v') || startsWith(github.ref_name, 'v'))
+    env:
+      IMAGE_TAG: ${{ startsWith(github.ref_name, 'test-v') && 'test' || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build catalog smoke image
+        run: docker build -t x402-catalog:ci .
+
+      - name: Run catalog container
+        run: |
+          docker run -d --name x402-catalog-ci -p 8088:8080 x402-catalog:ci
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8088/api/status.json; then
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs x402-catalog-ci
+          exit 1
+
+      - name: Smoke HTTP API
+        run: |
+          curl -fsS http://127.0.0.1:8088/api/catalog.json > /tmp/catalog.json
+          curl -fsS http://127.0.0.1:8088/api/providers/sunpump-token-launch.json > /tmp/provider.json
+          curl -fsS http://127.0.0.1:8088/api/pay/sunpump-token-launch.json > /tmp/pay.json
+          curl -fsS http://127.0.0.1:8088/api/providers/defillama.json > /tmp/defillama-provider.json
+          curl -fsS http://127.0.0.1:8088/api/pay/defillama.json > /tmp/defillama-pay.json
+          curl -fsS http://127.0.0.1:8088/api/pay/defillama.md > /tmp/defillama-pay.md
+          python3 -m json.tool /tmp/catalog.json > /dev/null
+          python3 -m json.tool /tmp/provider.json > /dev/null
+          python3 -m json.tool /tmp/pay.json > /dev/null
+          python3 -m json.tool /tmp/defillama-provider.json > /dev/null
+          python3 -m json.tool /tmp/defillama-pay.json > /dev/null
+          test -s /tmp/defillama-pay.md
+
+      - name: Stop catalog container
+        if: always()
+        run: docker rm -f x402-catalog-ci || true
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ env.IMAGE_TAG }}
+
+      - name: Build and push catalog image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

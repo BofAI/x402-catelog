@@ -1,62 +1,90 @@
-# x402-catelog
+# x402 Catalog
 
-`x402-catelog` 是 BankofAI 维护的公开 x402 服务目录仓库。一期不保存数据库，也不接收任何上游 API key、token、password、provider.yml 或 `.env`。
+`x402-catelog` is a public service catalog for x402-enabled APIs.
 
-社区提交流程和可复制命令见 [`examples/README.md`](examples/README.md)。
+The repository stores only public discovery metadata. It does not store gateway runtime configuration, upstream API keys, bearer tokens, wallet private keys, `provider.yml`, `.env` files, or other private operator data.
 
-服务方自己运行 gateway，向本仓库提交公开材料：
+## What This Repository Contains
 
-- `providers/<fqn>/catalog.json`：前端、CLI、Agent 用的公开服务信息。
-- `providers/<fqn>/pay.md`：人和 Agent 可读的调用与支付说明。
+Provider entries live under `providers/`:
 
-CI 会校验字段、扫描敏感信息，然后生成 `dist/` 静态快照：
+```text
+providers/<provider-fqn>/catalog.json
+providers/<provider-fqn>/pay.md
+```
 
-- `dist/catalog.json`：前端列表页和 `x402-cli catalog search` 使用。
-- `dist/providers/<fqn>.json`：服务详情。
-- `dist/pay/<fqn>.json`：Agent/CLI 读取的支付与调用摘要。
-- `dist/pay/<fqn>.md`：可读版调用说明。
-- `dist/search-index.json`：轻量搜索索引。
-- `dist/categories.json`：前端分类配置。
-- `dist/status.json`：构建状态。
+Generated catalog snapshots live under `dist/`:
 
-## 本地校验
+```text
+dist/catalog.json
+dist/providers/<provider-fqn>.json
+dist/pay/<provider-fqn>.json
+dist/pay/<provider-fqn>.md
+dist/categories.json
+dist/search-index.json
+dist/status.json
+```
+
+The generated files are static JSON and Markdown assets that can be served by any static file server or CDN.
+
+## Provider Metadata
+
+Each provider directory contains two public files:
+
+- `catalog.json`: service metadata for catalog UIs, CLI tools, and agents.
+- `pay.md`: human-readable usage and payment instructions.
+
+Provider metadata should describe the public service surface only:
+
+- service name, logo, category, and tags
+- supported chains and payment routes
+- public endpoint paths, methods, and descriptions
+- pricing summary
+- localized display metadata when available
+
+Do not submit private configuration or secrets.
+
+## Build
+
+Requirements:
+
+- Python 3.11 or newer
+
+Build the static catalog:
 
 ```bash
 python3 scripts/validate.py
 python3 scripts/build.py
 ```
 
-## 容器启动
+The build reads `providers/*/catalog.json` and writes the generated snapshot into `dist/`.
 
-Catalog 是静态服务，镜像构建时会先校验并生成 `dist/`，然后从 `/api/` 提供 JSON。
+## Public API Shape
 
-```bash
-docker compose build catalog
-docker compose up -d catalog
-curl http://127.0.0.1:8088/api/status.json
-curl http://127.0.0.1:8088/api/catalog.json
+When `dist/` is served under `/api`, consumers can read:
+
+```text
+GET /api/status.json
+GET /api/catalog.json
+GET /api/categories.json
+GET /api/search-index.json
+GET /api/providers/<provider-fqn>.json
+GET /api/pay/<provider-fqn>.json
+GET /api/pay/<provider-fqn>.md
 ```
 
-端口可通过环境变量覆盖：
+`catalog.json` is the primary index for catalog UIs and agent discovery. Provider detail pages can use `providers/<provider-fqn>.json`, while CLI and agent payment flows can use `pay/<provider-fqn>.json` or `pay/<provider-fqn>.md`.
 
-```bash
-X402_CATALOG_PORT=8088 docker compose up -d catalog
-```
+## Submitting a Provider
 
-## 本地搜索 Demo
+1. Run your own x402 gateway and keep all private configuration outside this repository.
+2. Add a new directory under `providers/<provider-fqn>/`.
+3. Include only `catalog.json` and `pay.md`.
+4. Run the build commands above.
+5. Open a pull request with the provider metadata and regenerated `dist/` files.
 
-```bash
-x402-cli catalog search weather --catalog dist/catalog.json --json
-x402-cli catalog show acme-weather --catalog dist/catalog.json --json
-x402-cli catalog endpoints acme-weather --catalog dist/catalog.json --json
-x402-cli catalog pay-json acme-weather --catalog dist/catalog.json
-```
+Provider FQNs should be stable, lowercase, and URL-safe.
 
-## 服务方提交流程
+## Repository Name
 
-1. 在自己的机器运行 gateway，密钥只留在本地 `provider.yml` 或环境变量中。
-2. 用 `x402-cli catalog export-gateway` 导出公开的 `catalog.json` 和 `pay.md`。
-3. 在本仓库新增 `providers/<fqn>/catalog.json` 与 `providers/<fqn>/pay.md`。
-4. 提交 PR，CI 通过后由定时任务或发布流程刷新 `dist/` 到 Catalog Server/CDN。
-
-仓库名沿用现有 `x402-catelog`。
+The repository name intentionally remains `x402-catelog` for compatibility with the existing project and deployment references.

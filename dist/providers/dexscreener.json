@@ -1,0 +1,178 @@
+{
+  "category": "finance",
+  "category_meta": {
+    "id": "finance",
+    "label": "Finance",
+    "label_zh": "金融"
+  },
+  "chain_kinds": [
+    "bnb",
+    "tron"
+  ],
+  "chains": [
+    "tron:mainnet",
+    "eip155:56"
+  ],
+  "chains_meta": [
+    {
+      "id": "tron:mainnet",
+      "kind": "tron",
+      "label": "TRON Mainnet",
+      "label_zh": "TRON 主网"
+    },
+    {
+      "id": "eip155:56",
+      "kind": "bnb",
+      "label": "BNB Chain",
+      "label_zh": "BNB Chain"
+    }
+  ],
+  "description": "## What it does\n\nDexScreener market data over x402: search DEX trading pairs, read live price / liquidity / volume, and surface newly launched and trending tokens across major chains, through one provider with TRON and BSC payment routes.\n\n\n## Best for\n\n- New-pool / meme-launch radar for agents tracking fresh listings.\n- Momentum and liquidity checks before entering a position.\n- Pair lookups by token address or symbol.\n\n## Endpoints\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses\n- `GET /latest/dex/search` — Search pairs by token name/symbol/address\n- `GET /token-profiles/latest/v1` — Latest token profiles (new-launch / discovery radar)\n\n## Code usage\n\nThese routes are x402-paid passthroughs. Use x402 payment for gateway access. TRON Mainnet (`exact_permit`) example:\n\n```bash\ncurl -sS 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\nPay on TRON Mainnet with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```\n\nBSC Mainnet (`eip155:56`, `exact_permit`) example:\n\n```bash\ncurl -sS 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/tokens/{tokenAddresses}'\n```\n\nPay on BSC Mainnet with the x402 CLI (amount in USD):\n\n```bash\nx402-cli pay 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network eip155:56 \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+  "endpoint_count": 3,
+  "endpoints": [
+    {
+      "description": "All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses",
+      "i18n": {
+        "zh-CN": {
+          "description": "一个或多个代币地址的全部 DEX 交易对(价格/流动性/成交量/FDV)",
+          "subtitle": "/latest/dex/tokens/{tokenAddresses}",
+          "title": "All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "max_price_usd": 0.001,
+      "metered": true,
+      "method": "GET",
+      "min_price_usd": 0.001,
+      "path": "/latest/dex/tokens/{tokenAddresses}",
+      "subtitle": "/latest/dex/tokens/{tokenAddresses}",
+      "title": "All DEX pairs (price/liquidity/volume/fdv) for one or more token addresses",
+      "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}",
+      "use_case": "Use this endpoint when an agent needs all DEX pairs (price/liquidity/volume/fdv) for one or more token addresses through the dexscreener-dex-data-tron gateway route.",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "dexscreener-dex-data-tron",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "dexscreener-dex-data-bsc",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/tokens/{tokenAddresses}"
+        }
+      ]
+    },
+    {
+      "description": "Search pairs by token name/symbol/address",
+      "i18n": {
+        "zh-CN": {
+          "description": "按代币名称/符号/地址搜索交易对",
+          "subtitle": "/latest/dex/search",
+          "title": "Search pairs by token name/symbol/address",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "max_price_usd": 0.001,
+      "metered": true,
+      "method": "GET",
+      "min_price_usd": 0.001,
+      "path": "/latest/dex/search",
+      "subtitle": "/latest/dex/search",
+      "title": "Search pairs by token name/symbol/address",
+      "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/search",
+      "use_case": "Use this endpoint when an agent needs search pairs by token name/symbol/address through the dexscreener-dex-data-tron gateway route.",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "dexscreener-dex-data-tron",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/search"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "dexscreener-dex-data-bsc",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/search"
+        }
+      ]
+    },
+    {
+      "description": "Latest token profiles (new-launch / discovery radar)",
+      "i18n": {
+        "zh-CN": {
+          "description": "最新代币档案(新发/发现雷达)",
+          "subtitle": "/token-profiles/latest/v1",
+          "title": "Latest token profiles (new-launch / discovery radar)",
+          "useCase": "适合 Agent 在分析、交易、风控或数据查询流程中按需调用。"
+        }
+      },
+      "max_price_usd": 0.001,
+      "metered": true,
+      "method": "GET",
+      "min_price_usd": 0.001,
+      "path": "/token-profiles/latest/v1",
+      "subtitle": "/token-profiles/latest/v1",
+      "title": "Latest token profiles (new-launch / discovery radar)",
+      "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/token-profiles/latest/v1",
+      "use_case": "Use this endpoint when an agent needs latest token profiles (new-launch / discovery radar) through the dexscreener-dex-data-tron gateway route.",
+      "x402_routes": [
+        {
+          "network": "tron:mainnet",
+          "provider": "dexscreener-dex-data-tron",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/token-profiles/latest/v1"
+        },
+        {
+          "network": "eip155:56",
+          "provider": "dexscreener-dex-data-bsc",
+          "scheme": "exact_permit",
+          "url": "https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/token-profiles/latest/v1"
+        }
+      ]
+    }
+  ],
+  "featured_tags": [
+    "dexscreener",
+    "dex",
+    "new-pairs",
+    "meme",
+    "liquidity",
+    "price",
+    "paid"
+  ],
+  "fqn": "dexscreener",
+  "has_free_tier": false,
+  "has_metering": true,
+  "i18n": {
+    "zh-CN": {
+      "description": "## 能做什么\n\nDexScreener 行情的 x402 网关:搜索 DEX 交易对,读取实时价格/流动性/成交量,发现各主流链上新上线与热门代币,一个 provider 覆盖 TRON 与 BSC。\n\n## 适合场景\n\n- 追踪新盘/meme 上新的 Agent 雷达。\n- 入场前查看动量与流动性。\n- 按代币地址或符号查交易对。\n\n## 接口\n\n- `GET /latest/dex/tokens/{tokenAddresses}` — 一个或多个代币地址的全部 DEX 交易对(价格/流动性/成交量/FDV)\n- `GET /latest/dex/search` — 按代币名称/符号/地址搜索交易对\n- `GET /token-profiles/latest/v1` — 最新代币档案(新发/发现雷达)\n\n## 调用示例\n\n这些是 x402 付费直通路由,通过 x402 支付后访问网关。TRON 主网(`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}'\n```\n\n使用 x402 CLI 在 TRON 主网付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-tron/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network tron:mainnet \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```\n\nBSC 主网(`eip155:56`,`exact_permit`)示例:\n\n```bash\ncurl -sS 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/tokens/{tokenAddresses}'\n```\n\n使用 x402 CLI 在 BSC 主网付费(金额按 USD):\n\n```bash\nx402-cli pay 'https://x402-gateway.bankofai.io/providers/dexscreener-dex-data-bsc/latest/dex/tokens/{tokenAddresses}' \\\n  --method GET \\\n  --network eip155:56 \\\n  --token USDT \\\n  --scheme exact_permit \\\n  --max-amount 0.001\n```",
+      "mainTitle": "实时 DEX 交易对、价格与新盘",
+      "subtitle": "链上行情雷达:新盘、动量与流动性。",
+      "title": "DexScreener",
+      "useCase": "适合需要链上金融、价格、收益、DEX 或安全数据的 Agent 工作流。"
+    }
+  },
+  "is_featured": false,
+  "is_first_party": false,
+  "logo": "https://dexscreener.com/favicon.ico",
+  "main_title": "Real-time DEX pairs, prices & new listings",
+  "main_title_zh": "实时 DEX 交易对、价格与新盘",
+  "max_price_usd": 0.001,
+  "min_price_usd": 0.001,
+  "service_url": "https://dexscreener.com",
+  "sha": "2df545c9e75bf12af8fe824a914b8b8564a5e1dd48b0cb5c182f444b6bd5c5ec",
+  "status": {
+    "catalog": "listed",
+    "gateway": "configured",
+    "payment": "paid-route",
+    "upstream": "public"
+  },
+  "sub_title": "On-chain market radar for new pools, momentum and liquidity.",
+  "sub_title_zh": "链上行情雷达:新盘、动量与流动性。",
+  "subtitle": "On-chain market radar for new pools, momentum and liquidity.",
+  "title": "DexScreener",
+  "title_zh": "DexScreener",
+  "use_case": "Use to look up a token's DEX pairs/price/liquidity, search tokens, or pull the latest token profiles for new-launch / meme screening."
+}
